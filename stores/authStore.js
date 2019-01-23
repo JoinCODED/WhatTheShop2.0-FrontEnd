@@ -15,9 +15,9 @@ class Store {
   setAuthToken(token) {
     if (token) {
       // Apply to every request
-      axios.defaults.headers.common["Authorization"] = `JWT ${token}`;
+      axios.defaults.headers.common.Authorization = `JWT ${token}`;
     } else {
-      delete axios.defaults.headers.common["Authorization"];
+      delete axios.defaults.headers.common.Authorization;
     }
   }
 
