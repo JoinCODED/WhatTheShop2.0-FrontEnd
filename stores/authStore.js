@@ -43,13 +43,13 @@ class Store {
     );
   }
 
-  loginUser(username, password) {
+  loginUser(username, password, navigation) {
     const userData = {
       username: username,
       password: password
     };
     instance
-      .post("/api/login/", userData)
+      .post("/login/", userData)
       .then(res => res.data)
       .then(user => {
         const { token } = user;
@@ -66,6 +66,16 @@ class Store {
         );
       })
       .catch(err => console.log("something went wrong logging in"));
+  }
+
+  registerUser(username, password, navigation) {
+    axios
+      .post("/register/", userData)
+      .then(res => res.data)
+      .then(user => {
+        this.loginUser(username, password, navigation);
+      })
+      .catch(err => console.error(err));
   }
 
   checkForToken = () => {
@@ -85,7 +95,7 @@ class Store {
             this.setCurrentUser(decodedUser);
           } else {
             this.logoutUser();
-            // Redirect to login
+            // Redirect to list
           }
         }
       })
