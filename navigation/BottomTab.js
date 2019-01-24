@@ -8,16 +8,16 @@ import ProfileStack from "./ProfileStack";
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack
+    ShoppingList: LolStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "LolTab") {
-          iconName = "smiley";
-          iconType = "Octicons";
+        if (routeName === "ShoppingList") {
+          iconName = "shop";
+          iconType = "Entypo";
         } else if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
