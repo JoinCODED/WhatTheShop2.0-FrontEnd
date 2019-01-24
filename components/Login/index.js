@@ -15,7 +15,16 @@ class Login extends Component {
       password: ""
     };
   }
+  static navigationOptions = {
+    title: "Login"
+  };
 
+  loginUser() {
+    authStore.loginUser(this.state, this.props.navigation);
+  }
+  signupUser() {
+    authStore.signupUser(this.state, this.props.navigation);
+  }
   render() {
     return (
       <Form>
@@ -34,11 +43,11 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
-        >
+        <Button full success onPress={() => this.loginUser()}>
           <Text>Login</Text>
+        </Button>
+        <Button full warning onPress={() => this.signupUser()}>
+          <Text>Register</Text>
         </Button>
       </Form>
     );
