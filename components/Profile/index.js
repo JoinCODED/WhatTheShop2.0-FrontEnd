@@ -3,7 +3,8 @@ import React, { Component } from "react";
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
 import authStore from "../../stores/authStore";
-
+import { observer } from "mobx-react";
+import { withNavigation } from "react-navigation";
 class Profile extends Component {
   render() {
     return (
@@ -11,7 +12,7 @@ class Profile extends Component {
         <CardItem>
           <Button
             danger
-            onPress={() => alert("You need to implement Logout n00b...")}
+            onPress={() => authStore.logoutUser(this.props.navigation)}
           >
             <Text>Logout</Text>
           </Button>
@@ -20,4 +21,4 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default withNavigation(observer(Profile));
