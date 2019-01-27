@@ -9,8 +9,9 @@ const ProfileStack = createStackNavigator(
     Login: LoginScreen
   },
   {
+    initialRouteName: "Login",
     defaultNavigationOptions: {
-      title: "WhatTheShop"
+      title: "My Profile"
     }
   }
 );
