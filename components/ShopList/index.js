@@ -9,11 +9,15 @@ import ShopStore from "../../stores/shopStore";
 
 // Component
 import ShopItem from "./ShopItem";
-
+import LogIcon from "../LogIcon";
 //my imports
 import { observer } from "mobx-react";
 
 class ShopList extends Component {
+  static navigationOptions = () => ({
+    // title: navigation.getParam("shop", {}).name,
+    headerRight: <LogIcon />
+  });
   render() {
     const items = ShopStore.items;
     let ListItems;

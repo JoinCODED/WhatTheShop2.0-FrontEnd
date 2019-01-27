@@ -11,7 +11,7 @@ const ListStack = createStackNavigator(
   {
     initialRouteName: "List",
     defaultNavigationOptions: {
-      title: "Items"
+      title: "Items List"
     }
   }
 );
