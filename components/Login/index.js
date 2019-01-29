@@ -6,6 +6,7 @@ import { Form, Item, Input, Button, Text } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
+import { bold } from "ansi-colors";
 
 class Login extends Component {
   constructor(props) {
@@ -14,6 +15,13 @@ class Login extends Component {
       username: "",
       password: ""
     };
+  }
+  static navigationOptions = {
+    title: "Login"
+  };
+
+  loginUser() {
+    authStore.loginUser(this.state, this.props.navigation);
   }
 
   render() {
@@ -34,11 +42,23 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
+        <Button full success onPress={() => this.loginUser()}>
+          <Text>Login</Text>
+        </Button>
         <Button
           full
-          onPress={() => alert("You need to implement Login noob...")}
+          light
+          transparent
+          onPress={() => this.props.navigation.navigate("Register")}
         >
-          <Text>Login</Text>
+          <Text
+            style={{
+              color: "black",
+              fontSize: 20
+            }}
+          >
+            New Account
+          </Text>
         </Button>
       </Form>
     );
