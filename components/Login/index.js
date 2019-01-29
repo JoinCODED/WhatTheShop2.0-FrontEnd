@@ -6,6 +6,7 @@ import { Form, Item, Input, Button, Text } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
+import { bold } from "ansi-colors";
 
 class Login extends Component {
   constructor(props) {
@@ -22,9 +23,7 @@ class Login extends Component {
   loginUser() {
     authStore.loginUser(this.state, this.props.navigation);
   }
-  signupUser() {
-    authStore.signupUser(this.state, this.props.navigation);
-  }
+
   render() {
     return (
       <Form>
@@ -46,8 +45,20 @@ class Login extends Component {
         <Button full success onPress={() => this.loginUser()}>
           <Text>Login</Text>
         </Button>
-        <Button full warning onPress={() => this.signupUser()}>
-          <Text>Register</Text>
+        <Button
+          full
+          light
+          transparent
+          onPress={() => this.props.navigation.navigate("Register")}
+        >
+          <Text
+            style={{
+              color: "black",
+              fontSize: 20
+            }}
+          >
+            New Account
+          </Text>
         </Button>
       </Form>
     );
