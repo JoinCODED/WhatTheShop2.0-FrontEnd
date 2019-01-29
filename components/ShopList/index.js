@@ -22,13 +22,8 @@ class ShopList extends Component {
     const items = ShopStore.items;
     let ListItems;
     if (items)
-      ListItems = items.map(item => (
-        <ShopItem
-          shoplist={item}
-          navigation={this.props.navigation}
-          key={item.id}
-        />
-      ));
+      ListItems = items.map(item => <ShopItem shoplist={item} key={item.id} />);
+    //navigation={this.props.navigation}
     if (ListItems) {
       return (
         <Content>
