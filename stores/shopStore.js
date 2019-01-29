@@ -9,7 +9,7 @@ class ShopStore {
 
   fetchAllItems() {
     axios
-      .get("http://192.168.100.75:8000/api/list")
+      .get("http://127.0.0.1:8000/api/list/")
       .then(res => res.data)
       .then(items => {
         this.items = items;

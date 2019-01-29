@@ -16,6 +16,8 @@ import {
 // Style
 import styles from "./styles";
 
+import { withNavigation } from "react-navigation";
+
 class ShopItem extends Component {
   handlePress() {
     this.props.navigation.navigate("Detail", {
@@ -51,4 +53,4 @@ class ShopItem extends Component {
   }
 }
 
-export default ShopItem;
+export default withNavigation(ShopItem);

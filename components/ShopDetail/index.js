@@ -11,27 +11,50 @@ import {
   List,
   ListItem,
   Picker,
-  Content
+  Content,
+  Icon
 } from "native-base";
 
 // Style
 import styles from "./styles";
 
 import { observer } from "mobx-react";
+import cartStore from "../../stores/cartStore";
 
 class ShopDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "TShirt-1",
-      size: "Small"
+      size: "Small",
+      quantity: 1
     };
   }
+
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.getParam("Detail", {}).name,
+    headerRight: (
+      <Button light transparent onPress={() => navigation.navigate("Cart")}>
+        <Text>
+          <Icon type="FontAwesome" name="shopping-bag" />
+        </Text>
+      </Button>
+    )
+  });
 
   changeSize(value) {
     this.setState({
       size: value
     });
+  }
+
+  handleAdd() {
+    const item = this.props.navigation.getParam("Detail", {});
+    let order = {
+      ...this.state, //... >> to remove the tag (this.state) and take only the key the the value and save it inside an object
+      name: item.name
+    };
+
+    cartStore.addItemtoCart(order);
   }
 
   render() {
@@ -64,7 +87,7 @@ class ShopDetail extends Component {
               </Picker>
             </Body>
           </ListItem>
-          <Button full danger>
+          <Button full danger onPress={() => this.handleAdd()}>
             <Text>Add</Text>
           </Button>
         </List>
