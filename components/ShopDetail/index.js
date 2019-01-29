@@ -18,6 +18,7 @@ import {
 import styles from "./styles";
 
 import { observer } from "mobx-react";
+// Stores
 
 class ShopDetail extends Component {
   constructor(props) {

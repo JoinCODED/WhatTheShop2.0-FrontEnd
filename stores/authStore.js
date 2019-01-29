@@ -48,7 +48,7 @@ class authStore {
       .post("/api/register/", userData)
       .then(res => res.data)
       .then(user => {
-        console.log("signup");
+        // console.log("signup");
 
         this.loginUser(userData, navigation);
       })
