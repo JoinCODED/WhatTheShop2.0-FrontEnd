@@ -19,7 +19,9 @@ import {
 import styles from "./styles";
 
 import { observer } from "mobx-react";
+
 import cartStore from "../../stores/cartStore";
+
 
 class ShopDetail extends Component {
   constructor(props) {
