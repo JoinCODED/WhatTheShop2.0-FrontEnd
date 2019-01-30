@@ -1,5 +1,6 @@
 import { decorate, observable } from "mobx";
 import axios from "axios";
+import authStore from "../stores/authStore";
 
 class CartStore {
   constructor() {
@@ -7,9 +8,10 @@ class CartStore {
   }
 
   addItemtoCart(order) {
-    let item = this.items.find(item => {
-      return item.name === order.name && item.size === order.size;
-    });
+    console.log("my items are:      ", order);
+    let item = this.items.find(
+      item => item.id === order.id && item.size === order.size
+    );
     if (item) {
       item.quantity += order.quantity;
     } else {
@@ -27,7 +29,12 @@ class CartStore {
 
   checkOutCart() {
     items = this.items;
-    axios.post("http://127.0.0.1:8000/api/order/create/", items);
+    axios
+      .post("http://127.0.0.1:8000/api/order/create/", items)
+      .then(res => res.data)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+    // console.log(items);
     this.items = [];
   }
 }

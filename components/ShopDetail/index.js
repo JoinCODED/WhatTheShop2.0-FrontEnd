@@ -22,7 +22,6 @@ import { observer } from "mobx-react";
 
 import cartStore from "../../stores/cartStore";
 
-
 class ShopDetail extends Component {
   constructor(props) {
     super(props);
@@ -50,10 +49,12 @@ class ShopDetail extends Component {
   }
 
   handleAdd() {
+    //Key names must be same as in the backend >> backend code (anyname = the list index name ['id'])
     const item = this.props.navigation.getParam("Detail", {});
     let order = {
       ...this.state, //... >> to remove the tag (this.state) and take only the key the the value and save it inside an object
-      name: item.name
+      //name: item.name,
+      id: item.id
     };
 
     cartStore.addItemtoCart(order);
@@ -85,7 +86,7 @@ class ShopDetail extends Component {
               >
                 <Picker.Item label="Small" value="Small" />
                 <Picker.Item label="Medium" value="Medium" />
-                <Picker.Item label="Larg" value="Larg" />
+                <Picker.Item label="Large" value="Large" />
               </Picker>
             </Body>
           </ListItem>

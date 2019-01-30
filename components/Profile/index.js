@@ -26,6 +26,7 @@ class Profile extends Component {
     headerRight: <LogIcon />
   });
   // componentDidMount() {
+  //   authStore.checkForToken();
   //   if (!authStore.user) return this.props.navigation.navigate("Login");
   // }
   render() {
