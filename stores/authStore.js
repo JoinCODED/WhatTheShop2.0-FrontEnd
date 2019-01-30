@@ -5,9 +5,10 @@ import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/"
+  //"http://192.168.100.96:8000/"
 });
 
-class authStore {
+class AuthStore {
   constructor() {
     this.user = null;
     this.isAuthenticated = false;
@@ -16,7 +17,7 @@ class authStore {
   setAuthToken(token) {
     if (token) {
       AsyncStorage.setItem("myToken", token).then(() => {
-        axios.defaults.headers.common.Authorization = `jwt ${token}`;
+        axios.defaults.headers.common.Authorization = `JWT ${token}`;
         this.user = jwt_decode(token);
         console.log(jwt_decode(token));
         this.isAuthenticated = true;
@@ -37,6 +38,7 @@ class authStore {
       .then(res => res.data)
       .then(user => {
         const decodedUser = jwt_decode(user.token);
+        this.setAuthToken(user.token);
         console.log(decodedUser);
         this.setCurrentUser(decodedUser);
         navigation.replace("Profile");
@@ -55,15 +57,21 @@ class authStore {
       .catch(err => console.log(err.response.data));
   }
   checkForToken() {
-    const token = AsyncStorage.getItem("myToken");
-    if (token) {
-      const user = jwt_decode(token);
-      if (user.exp > Date.now() / 1000) {
-        this.setAuthToken(token);
+    console.log("ran");
+    AsyncStorage.getItem("myToken").then(token => {
+      if (token) {
+        const user = jwt_decode(token);
+        if (user.exp > Date.now() / 1000) {
+          console.log("works?");
+          this.setAuthToken(token);
+        } else {
+          console.log("Nop");
+          this.setAuthToken();
+        }
       } else {
-        this.setAuthToken();
+        console.log("no token");
       }
-    }
+    });
   }
 
   logoutUser(navigation) {
@@ -72,12 +80,13 @@ class authStore {
   }
 }
 
-decorate(authStore, {
+decorate(AuthStore, {
   user: observable,
   isAuthenticated: observable
 });
-
-export default new authStore();
+const authStore = new AuthStore();
+authStore.checkForToken();
+export default authStore;
 
 //   constructor() {
 //     this.user = null;

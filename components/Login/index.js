@@ -23,6 +23,9 @@ class Login extends Component {
   loginUser() {
     authStore.loginUser(this.state, this.props.navigation);
   }
+  componentDidMount() {
+    authStore.checkForToken();
+  }
 
   render() {
     return (
