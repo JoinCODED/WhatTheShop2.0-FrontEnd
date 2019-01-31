@@ -7,8 +7,10 @@ import ListStack from "./ListStack";
 
 const BottomTab = createBottomTabNavigator(
   {
+
     ListTab: ListStack,
     ProfileTab: ProfileStack
+
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

@@ -22,6 +22,9 @@ class Login extends Component {
   loginUser() {
     authStore.loginUser(this.state, this.props.navigation);
   }
+  componentDidMount() {
+    authStore.checkForToken();
+  }
 
   render() {
     // if (authStore.user) return this.props.navigation.replace("Profile");
