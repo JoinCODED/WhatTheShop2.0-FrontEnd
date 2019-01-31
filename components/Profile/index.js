@@ -25,12 +25,8 @@ class Profile extends Component {
   static navigationOptions = () => ({
     headerRight: <LogIcon />
   });
-  // componentDidMount() {
-  //   authStore.checkForToken();
-  //   if (!authStore.user) return this.props.navigation.navigate("Login");
-  // }
+
   render() {
-    // if (!authStore.user) return <ScrollView />;
     if (!authStore.user) return this.props.navigation.navigate("Login");
     return (
       <ScrollView style={styles.scrollContainer}>

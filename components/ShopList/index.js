@@ -22,9 +22,11 @@ class ShopList extends Component {
     const items = ShopStore.items;
     let ListItems;
     if (items)
+
       ListItems = items.map(item => {
         return <ShopItem shoplist={item} key={item.id} />;
       });
+
     return (
       <Content>
         <List>{ListItems}</List>
