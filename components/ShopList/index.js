@@ -24,13 +24,11 @@ class ShopList extends Component {
     if (items)
       ListItems = items.map(item => <ShopItem shoplist={item} key={item.id} />);
     //navigation={this.props.navigation}
-    if (ListItems) {
-      return (
-        <Content>
-          <List>{ListItems}</List>
-        </Content>
-      );
-    }
+    return (
+      <Content>
+        <List>{ListItems}</List>
+      </Content>
+    );
   }
 }
 
