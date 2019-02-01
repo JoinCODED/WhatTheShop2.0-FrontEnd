@@ -2,14 +2,15 @@ import React from "react";
 import { Icon } from "native-base";
 
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
-import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
 import ListStack from "./ListStack";
 
 const BottomTab = createBottomTabNavigator(
   {
-    ProfileTab: ProfileStack,
-    ListTab: ListStack
+
+    ListTab: ListStack,
+    ProfileTab: ProfileStack
+
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

@@ -6,7 +6,6 @@ import { Form, Item, Input, Button, Text } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
-import { bold } from "ansi-colors";
 
 class Login extends Component {
   constructor(props) {
@@ -28,6 +27,7 @@ class Login extends Component {
   }
 
   render() {
+    // if (authStore.user) return this.props.navigation.replace("Profile");
     return (
       <Form>
         <Item>

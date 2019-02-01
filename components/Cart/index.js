@@ -6,10 +6,10 @@ import { Text, List, Button } from "native-base";
 
 // Component
 import CartItem from "./CartItem";
-
 //Store
 import CartStore from "../../stores/cartStore";
-
+import authStore from "../../stores/authStore";
+import { withNavigation } from "react-navigation";
 class Cart extends Component {
   render() {
     const items = CartStore.items;
@@ -25,9 +25,13 @@ class Cart extends Component {
         <Button
           full
           danger
-          onPress={() =>
-            CartStore.checkOutCart(alert("Thank you for shopping with us!"))
-          }
+          onPress={() => {
+            if (authStore.user) {
+              CartStore.checkOutCart(alert("Thank you for shopping with us!"));
+            } else {
+              this.props.navigation.replace("Login");
+            }
+          }}
         >
           <Text>Checkout</Text>
         </Button>
@@ -39,4 +43,4 @@ class Cart extends Component {
   }
 }
 
-export default observer(Cart);
+export default withNavigation(observer(Cart));

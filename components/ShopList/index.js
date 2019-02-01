@@ -26,6 +26,13 @@ class ShopList extends Component {
         return <ShopItem shoplist={item} key={item.id} />;
       });
     }
+
+    if (items)
+
+      ListItems = items.map(item => {
+        return <ShopItem shoplist={item} key={item.id} />;
+      });
+
     return (
       <Content>
         <List>{ListItems}</List>
