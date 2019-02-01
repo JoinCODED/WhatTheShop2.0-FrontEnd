@@ -13,6 +13,7 @@ import { withNavigation } from "react-navigation";
 class Cart extends Component {
   render() {
     const items = CartStore.items;
+
     let content;
     if (items) {
       content = items.map(item => <CartItem item={item} key={item.id} />);
@@ -34,6 +35,9 @@ class Cart extends Component {
         >
           <Text>Checkout</Text>
         </Button>
+        <Text style={{ marginLeft: 50, color: "black" }}>
+          {CartStore.total}
+        </Text>
       </List>
     );
   }

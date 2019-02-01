@@ -13,25 +13,28 @@ import {
   ListItem,
   Icon,
   Image,
-  Thumbnail
+  Thumbnail,
+  Card,
+  Content
 } from "native-base";
 
 //const { item } = this.props;
 // const { item } = this.props;
 const CartItem = props => {
-  console.log(props.item.id);
-  let ItemImage = ShopStore.fetchItemByID(props.item.id);
-  console.log("Item inside cart item: ", ItemImage.image);
+  //console.log(props.item.id);
+
+  let itemImage = ShopStore.fetchItemByID(props.item.id);
   return (
     <ListItem style={{ borderBottomWidth: 0 }}>
       <Left>
-        <Thumbnail bordered source={{ uri: ItemImage.image }} />
+        <Thumbnail bordered source={{ uri: itemImage.image }} />
         <Text note style={{ marginLeft: 100, color: "black" }}>
           {props.item.size}
         </Text>
       </Left>
       <Body>
         <Text style={{ color: "black" }}>{props.item.quantity}</Text>
+        <Text style={{ color: "black" }}>{itemImage.price}</Text>
       </Body>
       <Right>
         <Button

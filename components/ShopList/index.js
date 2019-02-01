@@ -21,6 +21,12 @@ class ShopList extends Component {
   render() {
     const items = ShopStore.items;
     let ListItems;
+    if (items) {
+      ListItems = items.map(item => {
+        return <ShopItem shoplist={item} key={item.id} />;
+      });
+    }
+
     if (items)
 
       ListItems = items.map(item => {
