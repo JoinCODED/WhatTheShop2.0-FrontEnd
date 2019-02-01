@@ -26,12 +26,13 @@ class ShopItem extends Component {
   }
   render() {
     const { shoplist } = this.props;
+    console.log("Image inside the shop item", shoplist.image);
     return (
       <Content>
         <View style={styles.overlay} />
         <ListItem
           button
-          onPress={() => this.handlePress(shoplist)}
+          onPress={() => this.handlePress()}
           style={styles.listitem}
         >
           <Card style={styles.transparent}>

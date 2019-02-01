@@ -3,7 +3,7 @@ import axios from "axios";
 
 class ShopStore {
   constructor() {
-    this.items = null;
+    this.items = [];
     this.loading = true;
   }
 
