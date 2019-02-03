@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Form, Item, Input, Button, Text } from "native-base";
+import { Item, Input, Button, Text, Icon, Container, Card } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
 
+import { withNavigation } from "react-navigation";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -27,44 +28,66 @@ class Login extends Component {
   }
 
   render() {
-    // if (authStore.user) return this.props.navigation.replace("Profile");
+    if (authStore.user) return this.props.navigation.replace("Profile");
     return (
-      <Form>
-        <Item>
-          <Input
-            placeholder="Username"
-            autoCapitalize="none"
-            onChangeText={username => this.setState({ username })}
-          />
-        </Item>
-        <Item last>
-          <Input
-            placeholder="Password"
-            autoCapitalize="none"
-            secureTextEntry={true}
-            onChangeText={password => this.setState({ password })}
-          />
-        </Item>
-        <Button full success onPress={() => this.loginUser()}>
-          <Text>Login</Text>
-        </Button>
-        <Button
-          full
-          light
-          transparent
-          onPress={() => this.props.navigation.navigate("Register")}
-        >
+      <Container
+        style={{
+          justifyContent: "center"
+        }}
+      >
+        <Card style={{ borderColor: "#BC8F8F" }}>
           <Text
             style={{
-              color: "black",
-              fontSize: 20
+              marginTop: 20,
+              alignSelf: "center",
+              fontSize: 35,
+              fontFamily: "AcademyEngravedLetPlain"
             }}
           >
-            New Account
+            Welcome back!
           </Text>
-        </Button>
-      </Form>
+          <Item>
+            <Icon active name="ios-person" style={{ color: "#687373" }} />
+            <Input
+              placeholder="Username"
+              autoCapitalize="none"
+              onChangeText={username => this.setState({ username })}
+            />
+          </Item>
+          <Item last>
+            <Icon active name="ios-lock" style={{ color: "#687373" }} />
+            <Input
+              placeholder="Password"
+              autoCapitalize="none"
+              secureTextEntry={true}
+              onChangeText={password => this.setState({ password })}
+            />
+          </Item>
+          <Button
+            full
+            style={{ backgroundColor: "#BC8F8F" }}
+            onPress={() => this.loginUser()}
+          >
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Login</Text>
+          </Button>
+          <Button
+            full
+            light
+            transparent
+            onPress={() => this.props.navigation.navigate("Register")}
+          >
+            <Text
+              style={{
+                color: "#687373",
+                fontSize: 20
+              }}
+            >
+              New Account
+            </Text>
+          </Button>
+        </Card>
+      </Container>
     );
   }
 }
-export default observer(Login);
+export default withNavigation(observer(Login));

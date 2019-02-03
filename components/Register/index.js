@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Form, Item, Input, Button, Text } from "native-base";
+import { Item, Input, Button, Text, Icon, Container, Card } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
@@ -29,48 +29,78 @@ class Register extends Component {
 
   render() {
     return (
-      <Form>
-        <Item>
-          <Input
-            placeholder="First Name"
-            autoCapitalize="none"
-            onChangeText={first_name => this.setState({ first_name })}
-          />
-        </Item>
-        <Item>
-          <Input
-            placeholder="Last Name"
-            autoCapitalize="none"
-            onChangeText={last_name => this.setState({ last_name })}
-          />
-        </Item>
-        <Item>
-          <Input
-            placeholder="Username"
-            autoCapitalize="none"
-            onChangeText={username => this.setState({ username })}
-          />
-        </Item>
-        <Item>
-          <Input
-            placeholder="Email"
-            autoCapitalize="none"
-            onChangeText={email => this.setState({ email })}
-          />
-        </Item>
-        <Item>
-          <Input
-            placeholder="Password"
-            autoCapitalize="none"
-            secureTextEntry={true}
-            onChangeText={password => this.setState({ password })}
-          />
-        </Item>
+      <Container style={{ justifyContent: "center" }}>
+        <Card style={{ borderColor: "#BC8F8F" }}>
+          <Text
+            style={{
+              marginTop: 20,
+              alignSelf: "center",
+              fontSize: 30,
+              fontFamily: "AcademyEngravedLetPlain"
+            }}
+          >
+            Fill the following to continue:
+          </Text>
+          <Item>
+            <Icon active name="ios-person-add" style={{ color: "#687373" }} />
+            <Input
+              placeholder="First Name"
+              autoCapitalize="none"
+              onChangeText={first_name => this.setState({ first_name })}
+            />
+          </Item>
+          <Item>
+            <Icon active name="ios-person-add" style={{ color: "#687373" }} />
+            <Input
+              placeholder="Last Name"
+              autoCapitalize="none"
+              onChangeText={last_name => this.setState({ last_name })}
+            />
+          </Item>
+          <Item>
+            <Icon active name="ios-person" style={{ color: "#687373" }} />
+            <Input
+              placeholder="Username"
+              autoCapitalize="none"
+              onChangeText={username => this.setState({ username })}
+            />
+          </Item>
+          <Item>
+            <Icon
+              active
+              name="email"
+              type="Entypo"
+              style={{ color: "#687373" }}
+            />
+            <Input
+              placeholder="Email"
+              autoCapitalize="none"
+              onChangeText={email => this.setState({ email })}
+            />
+          </Item>
+          <Item>
+            <Icon active name="ios-lock" style={{ color: "#687373" }} />
+            <Input
+              placeholder="Password"
+              autoCapitalize="none"
+              secureTextEntry={true}
+              onChangeText={password => this.setState({ password })}
+            />
+          </Item>
 
-        <Button full warning onPress={() => this.signupUser()}>
-          <Text>Register</Text>
-        </Button>
-      </Form>
+          <Button
+            full
+            style={{
+              backgroundColor: "#BC8F8F",
+              fontWeight: "bold",
+              marginTop: 10
+            }}
+            onPress={() => this.signupUser()}
+          >
+            <Text style={{ fontSize: 20 }}>Register</Text>
+          </Button>
+        </Card>
+      </Container>
     );
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Text, List, Button } from "native-base";
+import { Text, List, Button, Icon } from "native-base";
 
 // Component
 import CartItem from "./CartItem";
@@ -23,7 +23,7 @@ class Cart extends Component {
         {content}
         <Button
           full
-          danger
+          style={{ backgroundColor: "#BC8F8F" }}
           onPress={() => {
             if (authStore.user) {
               CartStore.checkOutCart(alert("Thank you for shopping with us!"));
@@ -32,7 +32,13 @@ class Cart extends Component {
             }
           }}
         >
-          <Text>Checkout</Text>
+          <Icon
+            active
+            name="money"
+            type="FontAwesome"
+            style={{ color: "white" }}
+          />
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>Checkout</Text>
         </Button>
       </List>
     );
