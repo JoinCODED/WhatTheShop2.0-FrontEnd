@@ -1,63 +1,128 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
 
 // NativeBase Components
-import { Button } from "native-base";
-import authStore from "../../stores/authStore";
+import { Button, CardItem, Card, Content, Container } from "native-base";
+
 import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 
-//Components
-import LogIcon from "../LogIcon";
+//Stores
+import authStore from "../../stores/authStore";
 
-import React, { Component } from "react";
-import { Text, View, Image, Alert, ScrollView } from "react-native";
+//Components
+import Logout from "../Logout";
+
+import { Text, Alert } from "react-native";
 
 // Style
 import styles from "./styles";
-class Profile extends Component {
-  constructor(props) {
-    super(props);
-  }
 
+class Profile extends Component {
+  static navigationOptions = () => ({
+    headerRight: <Logout />
+  });
+  handlePress() {
+    this.props.navigation.navigate("Orders");
+  }
   onClickListener = viewId => {
     Alert.alert("Alert", "Button pressed " + viewId);
   };
-  static navigationOptions = () => ({
-    headerRight: <LogIcon />
-  });
 
   render() {
     if (!authStore.user) return this.props.navigation.navigate("Login");
     return (
-      <ScrollView style={styles.scrollContainer}>
-        <View style={styles.container}>
-          <View style={styles.box}>
-            {/* <Image
-              style={styles.profileImage}
-              source={{
-                uri: "https://bootdey.com/img/Content/avatar/avatar6.png"
+      <Container style={{ justifyContent: "center" }}>
+        <Card style={{ borderColor: "#BC8F8F" }}>
+          <Text
+            style={{
+              color: "black",
+              alignSelf: "center",
+              fontSize: 35,
+              fontFamily: "AcademyEngravedLetPlain",
+              marginTop: 20,
+              marginBottom: 10
+            }}
+          >
+            User Information:
+          </Text>
+          <CardItem
+            style={{
+              marginTop: 10,
+
+              alignSelf: "center",
+              borderBottomColor: "#BC8F8F",
+              borderBottomWidth: 1,
+              width: "90%"
+            }}
+          >
+            <Text
+              style={{
+                color: "black",
+                fontSize: 25,
+                fontFamily: "AcademyEngravedLetPlain"
               }}
-            /> */}
-            <Text style={styles.name}>{authStore.user.username} </Text>
-          </View>
-          {/* <View style={styles.box}>
-            <Text style={styles.name}>{authStore.userInfo.first_name}</Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.name}>{authStore.userInfo.last_name}</Text>
-          </View> */}
-          <View style={styles.box}>
-            <Text style={styles.name}>{authStore.user.email}</Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.name}>Previous Orders </Text>
-          </View>
-        </View>
+            >
+              Username:{"\n"}
+              {authStore.user.username}
+            </Text>
+          </CardItem>
+          <CardItem
+            style={{
+              marginTop: 30,
+
+              alignSelf: "center",
+              borderBottomColor: "#BC8F8F",
+              borderBottomWidth: 1,
+              width: "90%"
+            }}
+          >
+            <Text
+              style={{
+                color: "black",
+                fontSize: 25,
+                fontFamily: "AcademyEngravedLetPlain"
+              }}
+            >
+              Email: {"\n"}
+              {authStore.user.email}
+            </Text>
+          </CardItem>
+          <CardItem
+            style={{
+              marginTop: 30,
+              alignSelf: "center",
+              justifyContent: "center",
+              width: "100%"
+            }}
+          >
+            <Button
+              transparent
+              onPress={() => this.handlePress()}
+              style={{
+                alignSelf: "center",
+                justifyContent: "center",
+                width: "150%"
+              }}
+            >
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 25,
+                  fontFamily: "AcademyEngravedLetPlain",
+                  textDecorationLine: "underline",
+                  textDecorationColor: "#BC8F8F"
+                }}
+              >
+                Previous Orders
+              </Text>
+            </Button>
+          </CardItem>
+        </Card>
         <Button
-          danger
           onPress={() => authStore.logoutUser(this.props.navigation)}
           style={{
-            bottom: -70,
+            bottom: -30,
+            backgroundColor: "#BC8F8F",
             alignSelf: "center",
             justifyContent: "center",
             width: "90%"
@@ -67,7 +132,7 @@ class Profile extends Component {
             Logout
           </Text>
         </Button>
-      </ScrollView>
+      </Container>
     );
   }
 }

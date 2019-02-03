@@ -4,10 +4,8 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
-
-  baseURL: "http://127.0.0.1:8000/"
+  baseURL: "http://127.0.0.1:8000"
   //"http://192.168.100.96:8000/"
-
 });
 
 class AuthStore {
@@ -17,7 +15,6 @@ class AuthStore {
 
   setAuthToken(token) {
     if (token) {
-
       return AsyncStorage.setItem("myToken", token).then(() => {
         axios.defaults.headers.common.Authorization = `jwt ${token}`;
 
@@ -37,7 +34,6 @@ class AuthStore {
       .post("/api/login/", userData)
       .then(res => res.data)
       .then(user => {
-
         this.setAuthToken(user.token);
 
         navigation.replace("Profile");
@@ -56,7 +52,6 @@ class AuthStore {
   }
 
   checkForToken() {
-
     return AsyncStorage.getItem("myToken").then(token => {
       if (token) {
         const user = jwt_decode(token);
@@ -65,8 +60,6 @@ class AuthStore {
         } else {
           this.setAuthToken();
         }
-
-
       }
     });
   }
@@ -78,11 +71,8 @@ class AuthStore {
 }
 
 decorate(AuthStore, {
-
   user: observable
-
 });
 const authStore = new AuthStore();
 authStore.checkForToken();
 export default authStore;
-

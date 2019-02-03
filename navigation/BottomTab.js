@@ -4,13 +4,12 @@ import { Icon } from "native-base";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import ProfileStack from "./ProfileStack";
 import ListStack from "./ListStack";
-
+import TestStack from "./TestStack";
 const BottomTab = createBottomTabNavigator(
   {
-
     ListTab: ListStack,
-    ProfileTab: ProfileStack
-
+    ProfileTab: ProfileStack,
+    TestTab: TestStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -23,6 +22,9 @@ const BottomTab = createBottomTabNavigator(
           iconType = "Entypo";
         } else if (routeName === "ProfileTab") {
           iconName = "person";
+          iconType = "MaterialIcons";
+        } else if (routeName === "TestTab") {
+          iconName = "list";
           iconType = "MaterialIcons";
         }
         return (

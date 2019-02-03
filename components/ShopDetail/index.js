@@ -84,14 +84,19 @@ class ShopDetail extends Component {
                 selectedValue={this.state.size}
                 onValueChange={this.changeSize.bind(this)}
               >
+                <Icon name="keyboard-arrow-down" type="MaterialIcons" />
                 <Picker.Item label="Small" value="Small" />
                 <Picker.Item label="Medium" value="Medium" />
                 <Picker.Item label="Large" value="Large" />
               </Picker>
             </Body>
           </ListItem>
-          <Button full danger onPress={() => this.handleAdd()}>
-            <Text>Add</Text>
+          <Button
+            full
+            style={{ backgroundColor: "#BC8F8F" }}
+            onPress={() => this.handleAdd()}
+          >
+            <Text style={{ fontWeight: "bold", fontSize: 20 }}>Add</Text>
           </Button>
         </List>
       </Content>
