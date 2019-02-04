@@ -75,6 +75,7 @@ class ShopDetail extends Component {
               <Thumbnail bordered source={{ uri: item.image }} />
             </Right>
           </ListItem>
+
           <ListItem style={{ borderBottomWidth: 0 }}>
             <Body>
               <Picker
@@ -93,6 +94,8 @@ class ShopDetail extends Component {
           <Button full danger onPress={() => this.handleAdd()}>
             <Text>Add</Text>
           </Button>
+
+          <Text style={styles.text}>{item.price + "\n"}</Text>
         </List>
       </Content>
     );

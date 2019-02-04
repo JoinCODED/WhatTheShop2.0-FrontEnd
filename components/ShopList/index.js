@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 // NativeBase Components
-import { List, Content } from "native-base";
+import { List, Content, View, Text, Container, CardItem } from "native-base";
+import { ScrollView, Dimensions } from "react-native";
 
-// Data
 //import shopList from "./list";
 import ShopStore from "../../stores/shopStore";
 
@@ -12,6 +12,8 @@ import ShopItem from "./ShopItem";
 import LogIcon from "../LogIcon";
 //my imports
 import { observer } from "mobx-react";
+import styles from "./styles";
+import { Grid, Col, Row } from "react-native-easy-grid";
 
 class ShopList extends Component {
   static navigationOptions = () => ({
@@ -20,16 +22,23 @@ class ShopList extends Component {
   });
   render() {
     const items = ShopStore.items;
+
+    const classification = this.props.navigation.getParam("List", {});
+
+    const itemList = items.filter(
+      item => classification.id === item.classification
+    );
+
     let ListItems;
-    if (items) {
-      ListItems = items.map(item => {
+    if (itemList) {
+      ListItems = itemList.map(item => {
         return <ShopItem shoplist={item} key={item.id} />;
       });
     }
     return (
-      <Content>
-        <List>{ListItems}</List>
-      </Content>
+      <ScrollView>
+        <View style={styles.container}>{ListItems}</View>
+      </ScrollView>
     );
   }
 }
