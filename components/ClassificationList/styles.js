@@ -1,31 +1,6 @@
-import { StyleSheet, Dimensions } from "react-native";
-import { FlatGrid } from "react-native-super-grid";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-
-  item: {
-    borderRadius: 20,
-    width: Dimensions.get("window").width * 0.4,
-    height: 150,
-    margin: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 20,
-    borderTopWidth: 0,
-    borderRightWidth: 0,
-    borderLeftWidth: 0,
-    borderBottomWidth: 0
-  },
-
-  imageThumbnail: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 100
-  },
   text: {
     color: "white",
     fontSize: 18,
@@ -66,7 +41,7 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     backgroundColor: "white",
-    opacity: 5
+    opacity: 1
   },
   background: {
     width: null,
