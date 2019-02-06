@@ -16,6 +16,18 @@ class Login extends Component {
     };
   }
 
+  static navigationOptions = ({ navigation }) => {
+    title: "Login";
+  };
+
+  handleLogin() {
+    authStore.loginUser(this.state, this.props.navigation);
+  }
+
+  handleSignUp() {
+    this.props.navigation.replace("Register");
+  }
+
   render() {
     return (
       <Form>
@@ -34,11 +46,11 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
-        >
+        <Button full onPress={() => this.handleLogin()}>
           <Text>Login</Text>
+        </Button>
+        <Button transparent onPress={() => this.handleSignUp()}>
+          <Text>You don't have an account? SignUp Now</Text>
         </Button>
       </Form>
     );
