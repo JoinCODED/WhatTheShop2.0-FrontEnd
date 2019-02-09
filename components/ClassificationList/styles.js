@@ -3,9 +3,11 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   text: {
     color: "white",
-    fontSize: 18,
+    backgroundColor: "rgba(52, 52, 52, 0.07)",
+    fontSize: 55,
     fontWeight: "bold",
-    opacity: 1
+    opacity: 3,
+    fontFamily: "AcademyEngravedLetPlain"
   },
   divider: {
     borderBottomColor: "black",
@@ -39,12 +41,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     flexDirection: "row"
   },
-  thumbnail: {
-    backgroundColor: "white",
-    opacity: 1
-  },
+
   background: {
-    width: null,
+    width: 390,
+    height: 240,
     flex: 1
   }
 });

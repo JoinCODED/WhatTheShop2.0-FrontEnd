@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View, Image } from "react-native";
 
 // NativeBase Components
-import { ListItem, Card, CardItem, Thumbnail, Text, Left } from "native-base";
+import { Card, CardItem, Text } from "native-base";
 
 // Navigation
 import { withNavigation } from "react-navigation";
@@ -12,13 +12,46 @@ import styles from "./styles";
 
 class ClassificationItem extends Component {
   handlePress() {
-    this.props.navigation.navigate("List", {
-      List: this.props.classification
+    this.props.navigation.navigate("TabBar", {
+      List: this.props.classification.id
     });
   }
   render() {
     return (
-      <ImageBackground
+      <Card style={{ borderColor: "#BC8F8F" }}>
+        <CardItem
+          button
+          style={styles.transparent}
+          onPress={() => this.handlePress(this.props.classification)}
+        >
+          <ImageBackground
+            source={{ uri: this.props.classification.backgroundImage }}
+            style={styles.background}
+          >
+            <CardItem style={styles.transparent}>
+              <View
+                style={{
+                  flex: 1,
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <Text style={styles.text}>
+                  {this.props.classification.name}
+                </Text>
+              </View>
+            </CardItem>
+          </ImageBackground>
+        </CardItem>
+      </Card>
+    );
+  }
+}
+
+export default withNavigation(ClassificationItem);
+{
+  /* <ImageBackground
         source={{ uri: this.props.classification.backgroundImage }}
         style={styles.background}
       >
@@ -27,20 +60,16 @@ class ClassificationItem extends Component {
           button
           onPress={() => this.handlePress(this.props.classification)}
           style={styles.listitem}
-        >
-          <Card style={styles.transparent}>
+        > 
+           <Card style={styles.transparent}>
             <CardItem style={styles.transparent}>
-              <Left>
+              <View style={{ flex: 1, width: "100%", alignItems: "center" }}>
                 <Text style={styles.text}>
                   {this.props.classification.name}
                 </Text>
-              </Left>
+              </View>
             </CardItem>
-          </Card>
-        </ListItem>
-      </ImageBackground>
-    );
-  }
+          </Card> 
+        </ListItem> 
+      </ImageBackground> */
 }
-
-export default withNavigation(ClassificationItem);

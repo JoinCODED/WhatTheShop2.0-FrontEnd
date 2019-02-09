@@ -2,16 +2,13 @@ import React, { Component } from "react";
 
 // NativeBase Components
 import {
-  Thumbnail,
+  Card,
   Text,
   Button,
-  Left,
-  Body,
-  Right,
-  List,
-  ListItem,
+  Thumbnail,
   Picker,
   Content,
+  CardItem,
   Icon
 } from "native-base";
 
@@ -35,9 +32,7 @@ class ShopDetail extends Component {
     title: navigation.getParam("Detail", {}).name,
     headerRight: (
       <Button light transparent onPress={() => navigation.navigate("Cart")}>
-        <Text>
-          <Icon type="FontAwesome" name="shopping-bag" />
-        </Text>
+        <Icon type="FontAwesome" name="shopping-bag" color="white" />
       </Button>
     )
   });
@@ -65,7 +60,54 @@ class ShopDetail extends Component {
 
     return (
       <Content>
-        <List>
+        <Card transparent>
+          <CardItem cardBody>
+            <Thumbnail
+              source={{ uri: item.image }}
+              style={{
+                width: 350,
+                height: 350,
+                justifyContent: "center",
+                alignSelf: "center"
+              }}
+            />
+          </CardItem>
+          <CardItem>
+            <Text style={styles.text}>Availabe Sizes:</Text>
+            <Picker
+              note
+              mode="dropdown"
+              style={{ width: 150 }}
+              selectedValue={this.state.size}
+              onValueChange={this.changeSize.bind(this)}
+            >
+              <Icon name="arrow-drop-down" type="MaterialIcons" />
+
+              <Picker.Item label="Small" value="Small" />
+              <Picker.Item label="Medium" value="Medium" />
+              <Picker.Item label="Large" value="Large" />
+            </Picker>
+          </CardItem>
+          <CardItem>
+            <Text style={styles.text}>Price:</Text>
+            <Text style={styles.text}>{item.price}</Text>
+          </CardItem>
+        </Card>
+        <Button
+          full
+          style={{ backgroundColor: "#BC8F8F" }}
+          onPress={() => this.handleAdd()}
+        >
+          <Text style={{ fontWeight: "bold", fontSize: 20 }}>Add To Cart</Text>
+        </Button>
+      </Content>
+    );
+  }
+}
+
+export default observer(ShopDetail);
+{
+  /* <List>
           <ListItem style={styles.top}>
             <Left>
               <Text style={styles.text}>{item.name + "\n"}</Text>
@@ -101,10 +143,5 @@ class ShopDetail extends Component {
           </Button>
 
           <Text style={styles.text}>{item.price + "\n"}</Text>
-        </List>
-      </Content>
-    );
-  }
+        </List> */
 }
-
-export default observer(ShopDetail);

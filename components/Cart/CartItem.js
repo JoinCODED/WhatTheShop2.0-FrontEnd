@@ -12,30 +12,36 @@ import {
   Button,
   ListItem,
   Icon,
-  Image,
   Thumbnail,
   Card,
   Content
 } from "native-base";
+import { Image } from "react-native";
 
 //const { item } = this.props;
 // const { item } = this.props;
 const CartItem = props => {
   //console.log(props.item.id);
-
-  let itemImage = ShopStore.fetchItemByID(props.item.id);
+  let fetchedItem = ShopStore.fetchItemByID(props.item.item);
+  console.log("image: ", fetchedItem);
+  // let itemImage = ShopStore.fetchItemByID(props.item.id);
   return (
     <ListItem style={{ borderBottomWidth: 0 }}>
       <Left>
-        <Thumbnail bordered source={{ uri: itemImage.image }} />
-        <Text note style={{ marginLeft: 100, color: "black" }}>
+        <Thumbnail source={{ uri: fetchedItem.image }} />
+        <Text
+          note
+          style={{ marginLeft: 50, marginRight: 10, color: "#778899" }}
+        >
           {props.item.size}
         </Text>
+        <Text style={{ marginRight: 10, color: "#778899" }}>
+          {props.item.quantity + "X"}
+        </Text>
+        <Text style={{ marginRight: 10, color: "#778899" }}>
+          {fetchedItem.price}
+        </Text>
       </Left>
-      <Body>
-        <Text style={{ color: "black" }}>{props.item.quantity}</Text>
-        <Text style={{ color: "black" }}>{itemImage.price}</Text>
-      </Body>
       <Right>
         <Button
           transparent
@@ -43,7 +49,7 @@ const CartItem = props => {
         >
           <Icon
             name="trash"
-            style={{ color: "black", fontSize: 30, marginLeft: 5 }}
+            style={{ color: "#778899", fontSize: 30, marginLeft: 5 }}
           />
         </Button>
       </Right>

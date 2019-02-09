@@ -27,7 +27,7 @@ class Logout extends Component {
           <Icon
             type="MaterialCommunityIcons"
             name="logout"
-            style={{ color: "black" }}
+            style={{ color: "white" }}
           />
         </Text>
       </Button>
