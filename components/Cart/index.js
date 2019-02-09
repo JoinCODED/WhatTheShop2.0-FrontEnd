@@ -1,50 +1,54 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-
+import Spinner from "react-native-loading-spinner-overlay";
+import { View, ScrollView } from "react-native";
 // NativeBase Components
-import { Text, List, Button, Icon } from "native-base";
 
 // Component
 import CartItem from "./CartItem";
+
 //Store
 import CartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
+import LoadingComp from "./Loading";
 import { withNavigation } from "react-navigation";
+import CartList from "./CartList";
+import cartStore from "../../stores/cartStore";
+
 class Cart extends Component {
-  render() {
-    const items = CartStore.items;
+  state = {
+    spinner: false
+  };
+  static navigationOptions = () => ({
+    // title: navigation.getParam("shop", {}).name,
+    // headerRight: <LogIcon />,
 
-    let content;
-    if (items) {
-      content = items.map(item => <CartItem item={item} key={item.id} />);
+    title: "My Cart"
+  });
+
+  componentDidMount() {
+    CartStore.getcart();
+    // setInterval(() => {
+    //   this.setState({
+    //     spinner: !this.state.spinner
+    //   });
+    // }, 1000);
+  }
+
+  handleView() {
+    if (CartStore.loading) {
+      return <LoadingComp />;
+    } else {
+      return <CartList />;
     }
+  }
 
+  render() {
+    console.log("Loading is: ", CartStore.loading);
     return (
-      <List>
-        {content}
-        <Button
-          full
-          style={{ backgroundColor: "#BC8F8F" }}
-          onPress={() => {
-            if (authStore.user) {
-              CartStore.checkOutCart(alert("Thank you for shopping with us!"));
-            } else {
-              this.props.navigation.replace("Login");
-            }
-          }}
-        >
-          <Icon
-            active
-            name="money"
-            type="FontAwesome"
-            style={{ color: "white" }}
-          />
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>Checkout</Text>
-        </Button>
-        <Text style={{ marginLeft: 50, color: "black" }}>
-          {CartStore.total}
-        </Text>
-      </List>
+      <ScrollView>
+        <View>{this.handleView()}</View>
+      </ScrollView>
     );
   }
 }

@@ -1,10 +1,11 @@
-import { decorate, observable } from "mobx";
+import { decorate, observable, computed } from "mobx";
 import axios from "axios";
 
 class ShopStore {
   constructor() {
     this.items = [];
     this.loading = true;
+    this.search = "";
   }
 
   fetchAllItems() {
@@ -21,18 +22,26 @@ class ShopStore {
   fetchItemByID(itemID) {
     console.log("the item id " + { itemID });
     let item = this.items.find(item => item.id === itemID);
-    console.log(item);
     if (item) {
+      this.loading = false;
       return item;
     } else {
-      return alert("image does not exists");
+      return alert("Item does not exists");
     }
+  }
+
+  get filteredItems() {
+    return this.items.filter(item =>
+      `${item.name}`.toLowerCase().includes(this.search.toLowerCase())
+    );
   }
 }
 
 decorate(ShopStore, {
   items: observable,
-  loading: observable
+  loading: observable,
+  search: observable,
+  filteredItems: computed
 });
 
 const shopstore = new ShopStore();

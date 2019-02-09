@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import { withNavigation } from "react-navigation";
+
 // NativeBase Components
 import {
   ListItem,
@@ -12,11 +12,18 @@ import {
   Icon,
   Content
 } from "native-base";
+import { ScrollView } from "react-native";
 //Stores
 import previousOrders from "../../stores/previousOrders";
 //Components
 import Order from "./order";
+import Log from "../UserStatus";
 class Orders extends Component {
+  static navigationOptions = () => ({
+    // title: navigation.getParam("shop", {}).name,
+    // headerRight: <Log />,
+    title: "Previous Orders"
+  });
   componentDidMount() {
     previousOrders.fetchOrders();
   }
@@ -25,7 +32,7 @@ class Orders extends Component {
       return <Order order={order} key={order.id} />;
     });
 
-    return orders;
+    return <ScrollView>{orders}</ScrollView>;
   }
 }
 

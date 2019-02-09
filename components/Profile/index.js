@@ -10,17 +10,14 @@ import { withNavigation } from "react-navigation";
 import authStore from "../../stores/authStore";
 
 //Components
-import Logout from "../Logout";
 
+import Login from "../Login";
 import { Text, Alert } from "react-native";
 
 // Style
 import styles from "./styles";
 
 class Profile extends Component {
-  static navigationOptions = () => ({
-    headerRight: <Logout />
-  });
   handlePress() {
     this.props.navigation.navigate("Orders");
   }
@@ -29,25 +26,24 @@ class Profile extends Component {
   };
 
   render() {
-    if (!authStore.user) return this.props.navigation.navigate("Login");
+    if (!authStore.user) return <Login />;
     return (
       <Container style={{ justifyContent: "center" }}>
+        <Text
+          style={{
+            color: "black",
+            alignSelf: "center",
+            fontSize: 35,
+            fontFamily: "AcademyEngravedLetPlain",
+            marginBottom: 5
+          }}
+        >
+          User Information:
+        </Text>
         <Card style={{ borderColor: "#BC8F8F" }}>
-          <Text
-            style={{
-              color: "black",
-              alignSelf: "center",
-              fontSize: 35,
-              fontFamily: "AcademyEngravedLetPlain",
-              marginTop: 20,
-              marginBottom: 10
-            }}
-          >
-            User Information:
-          </Text>
           <CardItem
             style={{
-              marginTop: 10,
+              marginTop: 20,
 
               alignSelf: "center",
               borderBottomColor: "#BC8F8F",
@@ -68,11 +64,10 @@ class Profile extends Component {
           </CardItem>
           <CardItem
             style={{
-              marginTop: 30,
+              marginTop: 20,
 
               alignSelf: "center",
-              borderBottomColor: "#BC8F8F",
-              borderBottomWidth: 1,
+
               width: "90%"
             }}
           >
@@ -94,42 +89,28 @@ class Profile extends Component {
               justifyContent: "center",
               width: "100%"
             }}
-          >
-            <Button
-              transparent
-              onPress={() => this.handlePress()}
-              style={{
-                alignSelf: "center",
-                justifyContent: "center",
-                width: "150%"
-              }}
-            >
-              <Text
-                style={{
-                  color: "black",
-                  fontSize: 25,
-                  fontFamily: "AcademyEngravedLetPlain",
-                  textDecorationLine: "underline",
-                  textDecorationColor: "#BC8F8F"
-                }}
-              >
-                Previous Orders
-              </Text>
-            </Button>
-          </CardItem>
+          />
         </Card>
         <Button
-          onPress={() => authStore.logoutUser(this.props.navigation)}
+          transparent
+          onPress={() => this.handlePress()}
           style={{
-            bottom: -30,
-            backgroundColor: "#BC8F8F",
             alignSelf: "center",
             justifyContent: "center",
-            width: "90%"
+            width: "90%",
+            marginTop: 20
           }}
         >
-          <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
-            Logout
+          <Text
+            style={{
+              color: "black",
+              fontSize: 30,
+              fontFamily: "AcademyEngravedLetPlain",
+              textDecorationLine: "underline",
+              textDecorationColor: "#BC8F8F"
+            }}
+          >
+            Previous Orders
           </Text>
         </Button>
       </Container>

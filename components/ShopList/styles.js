@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { FlatGrid } from "react-native-super-grid";
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +30,20 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     opacity: 1
+  },
+  name: {
+    fontSize: 20,
+    color: "#687373",
+    backgroundColor: "white",
+    marginTop: 5,
+    zIndex: 1000
+  },
+  line: {
+    width: "100%",
+    height: 1,
+    backgroundColor: "#BC8F8F",
+    position: "absolute",
+    top: "60%"
   },
   divider: {
     borderBottomColor: "black",

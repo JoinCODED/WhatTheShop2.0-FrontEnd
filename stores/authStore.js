@@ -38,7 +38,10 @@ class AuthStore {
 
         navigation.replace("Profile");
       })
-      .catch(err => console.error(err.response.data));
+      .catch(err => {
+        console.log("Invalid Login Information", err),
+          alert("Invalid Login Information");
+      });
   }
 
   signupUser(userData, navigation) {
@@ -48,7 +51,10 @@ class AuthStore {
       .then(user => {
         this.loginUser(userData, navigation);
       })
-      .catch(err => console.log(err.response.data));
+      .catch(err => {
+        console.log("Invalid Login Information", err),
+          alert("Invalid Register ");
+      });
   }
 
   checkForToken() {

@@ -1,9 +1,12 @@
 import { decorate, observable, computed } from "mobx";
 import axios from "axios";
 import ShopStore from "../stores/shopStore";
+import authStore from "./authStore";
+
 class CartStore {
   constructor() {
     this.items = [];
+    this.loading = true;
   }
 
   addItemtoCart(order) {
@@ -11,42 +14,65 @@ class CartStore {
     let item = this.items.find(
       item => item.id === order.id && item.size === order.size
     );
-    if (item) {
-      item.quantity += order.quantity;
-    } else {
-      this.items.push(order);
+    if (authStore.user) {
+      if (item) {
+        item.quantity += order.quantity;
+        axios
+          .post("http://127.0.0.1:8000/api/cart/", order)
+          .then(res => res.data)
+          .then(data => data)
+          .catch(err => console.log(err));
+      } else {
+        this.items.push(order);
+        axios
+          .post("http://127.0.0.1:8000/api/cart/", order)
+          .then(res => res.data)
+          .then(data => data)
+          .catch(err => console.log(err));
+      }
     }
   }
 
-  removeItemFromCart(order) {
-    this.items = this.items.filter(filterOrder => filterOrder !== order);
-    //************* another solution *********************:
-    // this.items = this.items.filter(filterOrder => {
-    //   return filterOrder !== order;
-    // });
+  // removeItemFromCart(order) {
+  //   this.items = this.items.filter(filterOrder => filterOrder !== order);
+  // }
+  getcart() {
+    axios
+      .get("http://127.0.0.1:8000/api/cart/")
+      .then(res => res.data)
+      .then(data => {
+        this.items = data;
+        this.loading = false;
+      })
+      .catch(err => console.log(err));
   }
 
+  removeItemFromCart(item) {
+    this.items = this.items.filter(filterOrder => filterOrder !== item);
+    axios
+      .delete(`http://127.0.0.1:8000/api/userchoice/${item.id}/delete/`)
+      .catch(err => console.log(err));
+  }
   get total() {
     let total = 0;
 
-    this.items.forEach(obj =>
+    this.items.forEach(obj => {
       ShopStore.items.find(item => {
-        if (item.id === obj.id) {
+        if (item.id === obj.item) {
           total = total + obj.quantity * item.price;
         }
-      })
-    );
-    // console.log("my items:  ", this.items);
-    // console.log("total price  ", total);
+      });
+    });
+
     return total;
   }
 
   checkOutCart() {
     items = this.items;
     axios
-      .post("http://127.0.0.1:8000/api/order/create/", items)
+      .post("http://127.0.0.1:8000/api/checkout/", items)
       .then(res => res.data)
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log(err));
     // console.log(items);
     this.items = [];
@@ -55,7 +81,8 @@ class CartStore {
 
 decorate(CartStore, {
   items: observable,
-  total: computed
+  total: computed,
+  loading: observable
 });
 
 let cartStore = new CartStore();
