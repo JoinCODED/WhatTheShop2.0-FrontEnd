@@ -4,6 +4,7 @@ import axios from "axios";
 class ShopStore {
   constructor() {
     this.items = [];
+    this.fetchedItem = null;
     this.loading = true;
     this.search = "";
   }
@@ -24,7 +25,7 @@ class ShopStore {
     let item = this.items.find(item => item.id === itemID);
     if (item) {
       this.loading = false;
-      return item;
+      this.fetchedItem = item;
     } else {
       return alert("Item does not exists");
     }
@@ -41,6 +42,7 @@ decorate(ShopStore, {
   items: observable,
   loading: observable,
   search: observable,
+  fetchedItem: observable,
   filteredItems: computed
 });
 

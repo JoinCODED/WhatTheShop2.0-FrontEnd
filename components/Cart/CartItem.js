@@ -22,7 +22,9 @@ import { Image } from "react-native";
 // const { item } = this.props;
 const CartItem = props => {
   //console.log(props.item.id);
-  let fetchedItem = ShopStore.fetchItemByID(props.item.item);
+
+  ShopStore.fetchItemByID(props.item.item);
+  let fetchedItem = ShopStore.fetchedItem;
   console.log("image: ", fetchedItem);
   // let itemImage = ShopStore.fetchItemByID(props.item.id);
   return (

@@ -22,7 +22,8 @@ class Orders extends Component {
   static navigationOptions = () => ({
     // title: navigation.getParam("shop", {}).name,
     // headerRight: <Log />,
-    title: "Previous Orders"
+    title: "Previous Orders",
+    fontSize: 20
   });
   componentDidMount() {
     previousOrders.fetchOrders();

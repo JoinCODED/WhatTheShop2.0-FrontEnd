@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 // NativeBase Components
-import { List, Content, View, Text, Container, CardItem } from "native-base";
-import { ScrollView, Dimensions } from "react-native";
+import { View } from "native-base";
+import { ScrollView } from "react-native";
 
 //import shopList from "./list";
 import ShopStore from "../../stores/shopStore";
@@ -20,8 +20,14 @@ class ShopList extends Component {
     // title: navigation.getParam("shop", {}).name,
     headerRight: <LogIcon />,
 
-    title: "Items List"
+    title: "Items List",
+    headerRight: (
+      <Button light transparent onPress={() => navigation.navigate("Cart")}>
+        <Icon type="FontAwesome" name="shopping-bag" color="white" />
+      </Button>
+    )
   });
+
   render() {
     const items = ShopStore.filteredItems;
 
