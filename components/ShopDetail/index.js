@@ -92,6 +92,16 @@ class ShopDetail extends Component {
             <Text style={styles.text}>Price:</Text>
             <Text style={styles.text}>{item.price}</Text>
           </CardItem>
+          <CardItem
+            style={{
+              borderColor: "#BC8F8F",
+              flexWrap: "wrap",
+              width: "100%"
+            }}
+          >
+            <Text style={styles.text}>Description:</Text>
+            <Text style={styles.text}>{item.description}</Text>
+          </CardItem>
         </Card>
         <Button
           full
@@ -106,42 +116,3 @@ class ShopDetail extends Component {
 }
 
 export default observer(ShopDetail);
-{
-  /* <List>
-          <ListItem style={styles.top}>
-            <Left>
-              <Text style={styles.text}>{item.name + "\n"}</Text>
-            </Left>
-            <Body />
-            <Right>
-              <Thumbnail bordered source={{ uri: item.image }} />
-            </Right>
-          </ListItem>
-
-          <ListItem style={{ borderBottomWidth: 0 }}>
-            <Body>
-              <Picker
-                note
-                mode="dropdown"
-                style={{ width: 150 }}
-                selectedValue={this.state.size}
-                onValueChange={this.changeSize.bind(this)}
-              >
-                <Icon name="keyboard-arrow-down" type="MaterialIcons" />
-                <Picker.Item label="Small" value="Small" />
-                <Picker.Item label="Medium" value="Medium" />
-                <Picker.Item label="Large" value="Large" />
-              </Picker>
-            </Body>
-          </ListItem>
-          <Button
-            full
-            style={{ backgroundColor: "#BC8F8F" }}
-            onPress={() => this.handleAdd()}
-          >
-            <Text style={{ fontWeight: "bold", fontSize: 20 }}>Add</Text>
-          </Button>
-
-          <Text style={styles.text}>{item.price + "\n"}</Text>
-        </List> */
-}

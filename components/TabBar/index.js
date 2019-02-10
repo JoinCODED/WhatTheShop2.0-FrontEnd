@@ -1,16 +1,6 @@
 import React, { Component } from "react";
 
-import {
-  Container,
-  View,
-  Header,
-  Tab,
-  Text,
-  Tabs,
-  ScrollableTab,
-  TabHeading,
-  Icon
-} from "native-base";
+import { View, Tab, Text, Tabs, ScrollableTab, TabHeading } from "native-base";
 import { observer } from "mobx-react";
 import { ScrollView } from "react-native";
 
@@ -70,6 +60,7 @@ class TabsScrollable extends Component {
               style={{
                 backgroundColor: "#BC8F8F"
               }}
+              activeTextStyle={{ color: "#0dc49d" }}
             />
           )}
           onChangeTab={event => {
@@ -80,17 +71,49 @@ class TabsScrollable extends Component {
             heading={
               <TabHeading
                 style={{
-                  backgroundColor: "white",
-                  tintColor: "red"
+                  backgroundColor: "white"
                 }}
               >
-                <Text>All</Text>
+                <Text styel={{ tabBarUnderlineStyle: { color: "red" } }}>
+                  All
+                </Text>
               </TabHeading>
             }
           />
-          <Tab heading="T-Shirt" />
-          <Tab heading="Shoes" />
-          <Tab heading="Sunglasses" />
+          <Tab
+            heading={
+              <TabHeading
+                style={{
+                  backgroundColor: "white"
+                }}
+              >
+                <Text>T-Shirt</Text>
+              </TabHeading>
+            }
+          />
+          <Tab
+            heading={
+              <TabHeading
+                style={{
+                  backgroundColor: "white"
+                }}
+              >
+                <Text>Shoes</Text>
+              </TabHeading>
+            }
+          />
+          <Tab
+            heading={
+              <TabHeading
+                style={{
+                  backgroundColor: "white",
+                  labelColor: "black"
+                }}
+              >
+                <Text>Sunglasses</Text>
+              </TabHeading>
+            }
+          />
         </Tabs>
         <SearchBar store={ShopStore} />
         <View>
