@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { List, Content } from "native-base";
+import { List, Content, Button, Icon } from "native-base";
 
 // Store
 import classificationStore from "../../stores/classificationStore";
@@ -11,6 +11,15 @@ import classificationStore from "../../stores/classificationStore";
 import ClassificationItem from "./classificationItem";
 
 class Classification extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: "Classification",
+    headerRight: (
+      <Button light transparent onPress={() => navigation.navigate("Cart")}>
+        <Icon type="FontAwesome" name="shopping-bag" color="white" />
+      </Button>
+    )
+  });
+
   render() {
     const classification = classificationStore.classification;
     let Items;

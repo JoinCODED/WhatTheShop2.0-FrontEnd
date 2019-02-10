@@ -27,7 +27,7 @@ class LogIcon extends React.Component {
           <Icon
             type="MaterialCommunityIcons"
             name="login"
-            style={{ color: "black" }}
+            style={{ color: "white" }}
           />
         </Text>
       </Button>

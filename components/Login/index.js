@@ -79,7 +79,9 @@ class Login extends Component {
             <Text
               style={{
                 color: "#687373",
-                fontSize: 20
+                fontSize: 20,
+                textDecorationLine: "underline",
+                textDecorationColor: "#BC8F8F"
               }}
             >
               New Account

@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   text: {
-    color: "black",
-    fontSize: 15,
+    color: "#778899",
+    fontSize: 18,
     marginLeft: 16,
 
     justifyContent: "center",
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   addIcon: {
-    fontSize: 40,
+    fontSize: 20,
     fontWeight: "bold",
     color: "white"
   },

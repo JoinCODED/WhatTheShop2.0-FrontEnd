@@ -4,12 +4,11 @@ import { Icon } from "native-base";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import ProfileStack from "./ProfileStack";
 import ListStack from "./ListStack";
-import TestStack from "./TestStack";
+
 const BottomTab = createBottomTabNavigator(
   {
     ListTab: ListStack,
-    ProfileTab: ProfileStack,
-    TestTab: TestStack
+    ProfileTab: ProfileStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -23,9 +22,6 @@ const BottomTab = createBottomTabNavigator(
         } else if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
-        } else if (routeName === "TestTab") {
-          iconName = "list";
-          iconType = "MaterialIcons";
         }
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
@@ -34,10 +30,10 @@ const BottomTab = createBottomTabNavigator(
     }),
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: "#6200EE",
-      inactiveTintColor: "#858585",
+      activeTintColor: "white",
+      inactiveTintColor: "#778899",
       style: {
-        backgroundColor: "white"
+        backgroundColor: "#BC8F8F"
       },
       labelStyle: {
         fontSize: 12
