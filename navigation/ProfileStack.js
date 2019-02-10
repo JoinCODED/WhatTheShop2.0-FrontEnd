@@ -29,7 +29,7 @@ const ProfileStack = createStackNavigator(
         fontFamily: "American Typewriter",
 
         fontWeight: "300",
-        fontSize: 35
+        fontSize: 30
       }
     }
   }

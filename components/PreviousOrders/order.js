@@ -29,6 +29,7 @@ class Order extends Component {
             borderBottomColor: "#BC8F8F",
             borderBottomWidth: 1,
             width: "100%",
+            flexWrap: "wrap",
             flexDirection: "column"
           }}
         >

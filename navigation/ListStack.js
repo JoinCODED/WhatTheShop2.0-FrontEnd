@@ -1,15 +1,21 @@
 import { createStackNavigator } from "react-navigation";
 import React from "react";
 import ClassificationScreen from "../components/ClassificationList";
-import ListScreen from "../components/ShopList";
+
 import DetailScreen from "../components/ShopDetail";
 import CartScreen from "../components/Cart";
-import Log from "../components/UserStatus";
+import WelcomeScreen from "../components/Welcome";
 import LoginScreen from "../components/Login";
 import ProfileScreen from "../components/Profile";
 import TabBar from "../components/TabBar";
 const ListStack = createStackNavigator(
   {
+    Welcome: {
+      screen: WelcomeScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
     Classification: ClassificationScreen,
     TabBar: {
       screen: TabBar
@@ -20,9 +26,8 @@ const ListStack = createStackNavigator(
     Profile: ProfileScreen
   },
   {
-    initialRouteName: "Classification",
+    initialRouteName: "Welcome",
     defaultNavigationOptions: {
-      // headerRight: <Log />,
       headerTintColor: "white",
       headerStyle: {
         backgroundColor: "#BC8F8F"
@@ -31,7 +36,7 @@ const ListStack = createStackNavigator(
         fontFamily: "American Typewriter",
 
         fontWeight: "300",
-        fontSize: 35
+        fontSize: 30
       }
     }
   }

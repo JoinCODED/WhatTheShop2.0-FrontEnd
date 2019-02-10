@@ -42,6 +42,8 @@ const BottomTab = createBottomTabNavigator(
   }
 );
 
-const AppContainer = createAppContainer(BottomTab);
+export default BottomTab;
 
-export default AppContainer;
+// const AppContainer = createAppContainer(BottomTab);
+
+// export default AppContainer;
