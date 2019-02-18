@@ -4,6 +4,7 @@ import { List, Button, Icon, Text, Card, CardItem } from "native-base";
 
 import CartStore from "../../stores/cartStore";
 import CartItem from "./CartItem";
+import authStore from "../../stores/authStore";
 
 class CartList extends Component {
   render() {
