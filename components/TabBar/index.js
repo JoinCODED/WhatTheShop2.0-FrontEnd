@@ -1,14 +1,33 @@
 import React, { Component } from "react";
 
-import { View, Tab, Text, Tabs, ScrollableTab, TabHeading } from "native-base";
+import {
+  View,
+  Tab,
+  Text,
+  Tabs,
+  ScrollableTab,
+  TabHeading,
+  Button,
+  Icon
+} from "native-base";
 import { observer } from "mobx-react";
 import { ScrollView } from "react-native";
-
 import ShopStore from "../../stores/shopStore";
 import ShopItem from "../ShopList/ShopItem";
 import styles from "./styles";
 import SearchBar from "../SearchBar";
 class TabsScrollable extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    // title: navigation.getParam("shop", {}).name,
+    // headerRight: <LogIcon />,
+
+    title: "Items List",
+    headerRight: (
+      <Button light transparent onPress={() => navigation.navigate("Cart")}>
+        <Icon type="FontAwesome" name="shopping-bag" color="white" />
+      </Button>
+    )
+  });
   constructor(props) {
     super(props);
     this.state = {

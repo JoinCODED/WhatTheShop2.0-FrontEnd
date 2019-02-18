@@ -26,8 +26,9 @@ class ShopStore {
     if (item) {
       this.loading = false;
       this.fetchedItem = item;
-    } else {
-      return alert("Item does not exists");
+      // } else {
+      //   return alert("Item does not exists");
+      // }
     }
   }
 

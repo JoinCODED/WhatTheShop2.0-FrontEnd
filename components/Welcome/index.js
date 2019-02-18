@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   touchable: {
     padding: 20,
     paddingBottom: 30,
-    paddingLeft: 50,
-    paddingRight: 50,
+    paddingLeft: 70,
+    paddingRight: 70,
     justifyContent: "center",
     marginTop: 150
   },
@@ -58,20 +58,21 @@ const styles = StyleSheet.create({
   textContainer: {
     borderColor: "#FFE4E1",
     borderWidth: 8,
-    // backgroundColor: "#000000",
+    backgroundColor: "#8A4B08",
     // opacity: 0.8,
     padding: 20,
     paddingBottom: 30,
-    paddingLeft: 50,
-    paddingRight: 50,
+    paddingLeft: 30,
+    paddingRight: 30,
     // alignItems: "center"
     justifyContent: "center",
-    marginTop: 150
+    marginTop: 60,
+    width: 300
   },
   text: {
     justifyContent: "center",
     color: "white",
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: "600"
   },
   top: {
