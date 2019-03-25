@@ -1,19 +1,36 @@
 import { createStackNavigator } from "react-navigation";
-
-import ProfileScreen from "../components/Profile";
 import React from "react";
 
+import ProfileScreen from "../components/Profile";
 import LoginScreen from "../components/Login";
-import { Icon } from "native-base";
+import LoginCheck from "../components/LoginCheck";
+import RegisterScreen from "../components/Register";
+import OrdersScreen from "../components/PreviousOrders";
+import Log from "../components/UserStatus";
+
 const ProfileStack = createStackNavigator(
   {
+    LoginCheck: LoginCheck,
     Profile: ProfileScreen,
-    Login: LoginScreen
+    Login: LoginScreen,
+    Register: RegisterScreen,
+    Orders: OrdersScreen
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "LoginCheck",
     defaultNavigationOptions: {
-      title: "WhatTheShop"
+      title: "My Profile",
+      headerRight: <Log />,
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "#BC8F8F"
+      },
+      headerTitleStyle: {
+        fontFamily: "American Typewriter",
+
+        fontWeight: "300",
+        fontSize: 30
+      }
     }
   }
 );
