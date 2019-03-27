@@ -4,6 +4,7 @@ import ProfileScreen from "../components/Profile";
 import React from "react";
 
 import LoginScreen from "../components/Login";
+import ProductList from "../components/ProductList";
 import { Icon } from "native-base";
 const ProfileStack = createStackNavigator(
   {
@@ -13,7 +14,7 @@ const ProfileStack = createStackNavigator(
   {
     initialRouteName: "Login",
     defaultNavigationOptions: {
-      title: "WhatTheShop"
+      title: "one-of-one"
     }
   }
 );

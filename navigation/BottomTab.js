@@ -4,11 +4,13 @@ import { Icon } from "native-base";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
+import ProductList from "./ProductListStack";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack
+    LolTab: LolStack,
+    List: ProductList
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -21,6 +23,9 @@ const BottomTab = createBottomTabNavigator(
         } else if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
+        } else if (routeName === "List") {
+          iconName = "list";
+          iconType = "Feather";
         }
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
