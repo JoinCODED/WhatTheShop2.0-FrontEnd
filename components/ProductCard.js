@@ -9,13 +9,15 @@ class ProductCard extends Component {
   //     });
   render() {
     const { product } = this.props;
+    console.log("=================");
+    console.log(product.detail);
     return (
       <Card>
         <CardItem>
           <Left>
-            <Thumbnail source={{ uri: product.img }} />
+            <Thumbnail source={{ uri: product.image }} />
             <Text>{product.name}</Text>
-            <Text>{product.distance}</Text>
+            <Text>{product.price}</Text>
           </Left>
         </CardItem>
       </Card>

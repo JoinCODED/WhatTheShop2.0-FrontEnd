@@ -8,8 +8,9 @@ class ProductStore {
 
   fetchAllProducts = async () => {
     try {
-      let res = await axios.get("https://192.168.5.8:8000/api/list/");
+      let res = await axios.get("http://127.0.0.1:8000/api/list/");
       let products = res.data;
+      console.log(products);
       this.products = products;
       this.loading = false;
     } catch (err) {
