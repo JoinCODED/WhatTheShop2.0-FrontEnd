@@ -8,13 +8,31 @@ import { Form, Item, Input, Button, Text } from "native-base";
 import authStore from "../../stores/authStore";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
+  state = {
+    username: "",
+    password: ""
+  };
+
+  static navigationOptions = {
+    title: "Login"
+  };
+
+  handleChangeUsername = value => {
+    this.setState({ username: value });
+  };
+  handleChangePassword = value => {
+    this.setState({ password: value });
+  };
+
+  handleLogin = () => {
+    const navigation = this.props.navigation;
+    authStore.loginUser(this.state, navigation);
+  };
+
+  handleSignup = () => {
+    const navigation = this.props.navigation;
+    authStore.registerUser(this.state, navigation);
+  };
 
   render() {
     return (
@@ -22,23 +40,27 @@ class Login extends Component {
         <Item>
           <Input
             placeholder="Username"
+            autoCorrect={false}
             autoCapitalize="none"
-            onChangeText={username => this.setState({ username })}
+            value={this.state.username}
+            onChangeText={this.handleChangeUsername}
           />
         </Item>
         <Item last>
           <Input
             placeholder="Password"
             autoCapitalize="none"
+            autoCorrect={false}
             secureTextEntry={true}
-            onChangeText={password => this.setState({ password })}
+            value={this.state.password}
+            onChangeText={this.handleChangePassword}
           />
         </Item>
-        <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
-        >
+        <Button full onPress={this.handleLogin}>
           <Text>Login</Text>
+        </Button>
+        <Button full onPress={this.handleSignup}>
+          <Text>Sign up</Text>
         </Button>
       </Form>
     );
