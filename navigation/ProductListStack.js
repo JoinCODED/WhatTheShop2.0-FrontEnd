@@ -1,10 +1,12 @@
 import { createStackNavigator } from "react-navigation";
 
-import productsList from "../components/ProductList";
+import ProductsList from "../components/ProductList";
+import ProductDetail from "../components/ProductDetail";
 
 const ProductListStack = createStackNavigator(
   {
-    List: productsList
+    List: ProductsList,
+    Detail: ProductDetail
   },
   {
     defaultNavigationOptions: {
