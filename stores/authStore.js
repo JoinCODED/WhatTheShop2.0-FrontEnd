@@ -6,6 +6,20 @@ import { AsyncStorage } from "react-native";
 class AuthStore {
   user = null;
 
+  loginUser = async (userData, navigation) => {
+    try {
+      const res = await axios.post(
+        "http://127.0.0.1:8000/api/login/",
+        userData
+      );
+      const user = res.data;
+      this.setUser(user.token);
+      navigation.navigate("List");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   setUser = async token => {
     if (token) {
       await AsyncStorage.setItem("myToken", token);
@@ -34,25 +48,10 @@ class AuthStore {
 
   registerUser = async (userData, navigation) => {
     try {
-      await axios.post("http://127.0.0.1:8000/", userData);
-      this.loginUser(userData, navigation);
-      //   const user = res.data;
-      //   this.setUser(user.token);
-      //   navigation.replace("");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  loginUser = async (userData, navigation) => {
-    try {
-      const res = await axios.post(
-        "http://127.0.0.1:8000/api/login/",
-        userData
-      );
+      await axios.post("http://127.0.0.1:8000/register/", userData);
       const user = res.data;
       this.setUser(user.token);
-      navigation.replace("CoffeeList");
+      navigation.navigate("List");
     } catch (error) {
       console.log(error);
     }
