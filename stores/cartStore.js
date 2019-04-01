@@ -3,12 +3,17 @@ import axios from "axios";
 
 class CartStore {
   items = [];
+  msg = "";
 
-  addItemToCart = async (item, userData) => {
-    await axios.post("http://127.0.0.1:8000/api/addtocart/", item, userData);
-    this.items.push(item);
-    const user = res.data;
-    console.log("ITEMS", items);
+  addItemToCart = async item => {
+    try {
+      let res = await axios.post("http://127.0.0.1:8000/api/addtocart/", item);
+      let newItem = res.data;
+      this.items.push(newItem);
+      console.log("THE ITEM IS: ", newItem);
+    } catch (err) {
+      console.log("ERROR WHILE ADDING TO CART", err);
+    }
   };
 
   //     let itemcheck = this.items.find(
@@ -29,10 +34,21 @@ class CartStore {
     this.items = this.items.filter(theitem => item !== theitem);
   };
 
-  checkoutCart = () => {
-    this.items = [];
-    alert("Your order is received :)");
+  checkoutCart = async () => {
+    try {
+      let res = await axios.post("http://127.0.0.1:8000/api/checkout/");
+      this.msg = res.data;
+      this.items = [];
+      console.log("CHECKOUTT: ", this.msg);
+    } catch (err) {
+      console.log("ERROR WHILE CHECKOUT", err);
+    }
   };
+  // checkoutCart = () => {
+  //   this.items = [];
+
+  //   alert("Your order is received :)");
+  // };
 
   //   get quantity() {
   //     let count = 0;
