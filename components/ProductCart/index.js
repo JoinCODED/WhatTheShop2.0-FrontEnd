@@ -1,30 +1,30 @@
-// import React, { Component } from "react";
-// import { observer } from "mobx-react";
+import React, { Component } from "react";
+import { observer } from "mobx-react";
 
-// // NativeBase Components
-// import { Text, List, Button } from "native-base";
-// // Component
-// import CartItem from "./CartItem";
-// //Store
-// import cartStore from "../../store/cartStore";
+// NativeBase Components
+import { Text, List, Button } from "native-base";
+// Component
+import CartItem from "./CartItem";
+//Store
+import cartStore from "../../stores/cartStore";
 
-// class CoffeeCart extends Component {
-//   render() {
-//     const items = cartStore.items;
-//     let cartItems;
-//     if (items) {
-//       cartItems = items.map(item => <CartItem item={item} key={item.id} />);
-//     }
+class CartPage extends Component {
+  render() {
+    const items = cartStore.items;
+    let cartItems;
+    if (items) {
+      cartItems = items.map(item => <CartItem item={item} key={item.id} />);
+    }
 
-//     return (
-//       <List>
-//         {cartItems}
-//         <Button full danger onPress={() => cartStore.checkoutCart()}>
-//           <Text>Checkout</Text>
-//         </Button>
-//       </List>
-//     );
-//   }
-// }
+    return (
+      <List>
+        {cartItems}
+        <Button full danger onPress={() => cartStore.checkoutCart()}>
+          <Text>Checkout</Text>
+        </Button>
+      </List>
+    );
+  }
+}
 
-// export default observer(CoffeeCart);
+export default observer(CartPage);

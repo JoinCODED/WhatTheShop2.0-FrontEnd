@@ -4,10 +4,10 @@ import axios from "axios";
 class CartStore {
   items = [];
 
-  addItemToCart = async (item, userData) => {
-    await axios.post("http://127.0.0.1:8000/api/addtocart/", item, userData);
+  addItemToCart = async item => {
+    await axios.post("http://127.0.0.1:8000/api/addtocart/", item);
     this.items.push(item);
-    const user = res.data;
+
     console.log("ITEMS", items);
   };
 
