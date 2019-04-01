@@ -7,20 +7,15 @@ import { observer } from "mobx-react";
 class CartButton extends Component {
   render() {
     return (
-      <Button
-        light
-        transparent
-        onPress={() => this.props.navigation.navigate("CartPage")}
-      >
-        <Text>
-          {cartStore.quantity > 0 && cartStore.quantity}
-          <Icon
-            type="MaterialCommunityIcons"
-            name="cart-outline"
-            style={{ color: "Black", fontSize: 30 }}
-          />
-        </Text>
-      </Button>
+      <Text>
+        {cartStore.quantity > 0 && cartStore.quantity}
+        <Icon
+          type="MaterialCommunityIcons"
+          name="cart-outline"
+          style={{ color: "Black", fontSize: 30 }}
+          onPress={() => this.props.navigation.navigate("CartPage")}
+        />
+      </Text>
     );
   }
 }

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ProductList from "../ProductList";
-import { Card, CardItem, Thumbnail, Text, Left, Button } from "native-base";
+// import ProductList from "../ProductList";
+import { Card, CardItem, Thumbnail, Text, Left, Icon } from "native-base";
 import { withNavigation } from "react-navigation";
-import ProductDetail from "../ProductDetail";
+// import ProductDetail from "../ProductDetail";
 class ProductCard extends Component {
   handlePress = () => {
     this.props.navigation.navigate("Detail", {
@@ -20,9 +20,13 @@ class ProductCard extends Component {
             <Thumbnail source={{ uri: product.image }} />
             <Text>{product.name}</Text>
             <Text>{product.price}</Text>
-            <Button onPress={this.handlePress}>
-              <Text>detail</Text>
-            </Button>
+
+            <Icon
+              type="Ionicons"
+              name="ios-more"
+              style={{ color: "Black", fontSize: 30, marginLeft: 40 }}
+              onPress={this.handlePress}
+            />
           </Left>
         </CardItem>
       </Card>

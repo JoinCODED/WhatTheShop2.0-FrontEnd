@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { Image } from "react-native";
+import defimage from "../assets/defimage.png";
 
 // NativeBase Components
 import {
@@ -11,7 +13,10 @@ import {
   Right,
   List,
   Content,
-  Button
+  Button,
+  CardItem,
+  Card,
+  Icon
 } from "native-base";
 
 // // Components
@@ -22,7 +27,7 @@ import cartStore from "../stores/cartStore";
 
 class ProductDetail extends Component {
   state = {
-    product_id: "",
+    product_id: this.props.navigation.getParam("shop").id,
     // option: "",
     quantity: 1
   };
@@ -36,11 +41,11 @@ class ProductDetail extends Component {
     headerRight: <CartButton />
   };
 
-  changeProduct = value => {
-    this.setState({
-      product_id: value
-    });
-  };
+  // changeProduct = value => {
+  //   this.setState({
+  //     product_id: value
+  //   });
+  // };
 
   //   changeOption = value => {
   //     this.setState({
@@ -59,11 +64,40 @@ class ProductDetail extends Component {
     console.log(product.name);
 
     return (
+      // <>
+      //   <Text>{product.name}</Text>
+      //   <Button light onPress={this.handlePress}>
+      //     <Text>Add</Text>
+      //   </Button>
+      // </>
       <>
-        <Text>{product.name}</Text>
-        <Button light onPress={this.handlePress}>
-          <Text>Add</Text>
-        </Button>
+        <Content>
+          <Card>
+            <CardItem>
+              <Left>
+                <Thumbnail source={{ uri: defimage.png }} />
+                <Body>
+                  <Text>{product.name}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image
+                source={{ uri: product.image }}
+                style={{ height: 200, width: null, flex: 1 }}
+              />
+            </CardItem>
+
+            <Body>
+              <Icon
+                type="Ionicons"
+                name="md-add"
+                style={{ color: "Black", marginRigth: 10 }}
+                onPress={this.handlePress}
+              />
+            </Body>
+          </Card>
+        </Content>
       </>
     );
   }
