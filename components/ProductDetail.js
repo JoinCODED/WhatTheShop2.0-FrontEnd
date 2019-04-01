@@ -10,14 +10,15 @@ import {
   Body,
   Right,
   List,
-  Content
+  Content,
+  Button
 } from "native-base";
 
 // // Components
 // import CartButton from "../CartButton";
 
-// // Store
-// import cartStore from "../../store/cartStore";
+// Store
+import cartStore from "../stores/cartStore";
 
 class ProductDetail extends Component {
   state = {
@@ -56,6 +57,9 @@ class ProductDetail extends Component {
     return (
       <>
         <Text>{product.name}</Text>
+        <Button light onPress={cartStore.addItemToCart}>
+          <Text>Test</Text>
+        </Button>
       </>
     );
   }

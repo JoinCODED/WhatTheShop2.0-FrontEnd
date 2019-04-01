@@ -1,11 +1,11 @@
 import { createStackNavigator } from "react-navigation";
 
-import ProductsList from "../components/ProductList";
+import ProductList from "../components/ProductList";
 import ProductDetail from "../components/ProductDetail";
 
 const ProductListStack = createStackNavigator(
   {
-    List: ProductsList,
+    List: ProductList, //ProductsList or ProductList???
     Detail: ProductDetail
   },
   {
