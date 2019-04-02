@@ -1,10 +1,41 @@
 import React from "react";
 import { Icon } from "native-base";
 
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import {
+  createBottomTabNavigator,
+  createAppContainer,
+  TabNavigator
+} from "react-navigation";
 import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
 import ProductList from "./ProductListStack";
+
+// const Stack = StackNavigator(
+//   {
+//     ProfileTab: { screen: ProfileStack },
+//     LolTab: { screen: LolStack },
+//     List: { screen: ProductList }
+//   },
+//   { initialRouteName: "ProfileTab" }
+// );
+
+// const Tabs = TabNavigator(
+//   {
+//     TabA: { screen: TabA },
+//     TabB: { screen: TabB },
+//     TabC: { screen: TabC }
+//   },
+//   {
+//     order: ["TabA", "TabB", "TabC"],
+//     animationEnabled: true
+//   }
+// );
+
+// const Drawer = DrawerNavigator({
+//   Stack: { screen: Stack },
+//   Tabs: { screen: Tabs },
+//   Plain: { screen: Plain }
+// });
 
 const BottomTab = createBottomTabNavigator(
   {
@@ -46,6 +77,4 @@ const BottomTab = createBottomTabNavigator(
   }
 );
 
-const AppContainer = createAppContainer(BottomTab);
-
-export default AppContainer;
+export default BottomTab;
