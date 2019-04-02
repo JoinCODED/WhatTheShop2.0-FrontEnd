@@ -2,7 +2,10 @@ import React, { Component } from "react";
 
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
+
+//Stores
 import authStore from "../../stores/authStore";
+import profileStore from "../../stores/profileStore";
 
 class Profile extends Component {
   render() {

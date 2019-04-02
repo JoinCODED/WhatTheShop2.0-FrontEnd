@@ -1,5 +1,6 @@
-import { createStackNavigator } from "react-navigation";
+// REPLACED LOLSTACK...TESTING PROFILE DRAWER
 
+import { createStackNavigator } from "react-navigation";
 import LolScreen from "../components/Lol";
 
 const LolStack = createStackNavigator(
