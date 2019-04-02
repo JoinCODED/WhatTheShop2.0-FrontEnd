@@ -14,6 +14,7 @@ class AuthStore {
       );
       const user = res.data;
       this.setUser(user.token);
+
       navigation.navigate("List");
     } catch (error) {
       console.log(error);
