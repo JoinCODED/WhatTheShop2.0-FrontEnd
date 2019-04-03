@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Button, TextInput, StyleSheet } from "react-native";
+import authStore from "../stores/authStore";
 
 export default class SignUp extends React.Component {
   state = {
@@ -7,24 +8,12 @@ export default class SignUp extends React.Component {
     password: "",
     email: ""
   };
-  onChangeText = (key, val) => {
+  handleChange = (key, val) => {
     this.setState({ [key]: val });
   };
-  signUp = async () => {
-    const { username, password, email } = this.state;
-    try {
-      // here place your signup logic
-      console.log("user successfully signed up!: ", success);
-    } catch (err) {
-      console.log("error signing up: ", err);
-    }
-  };
-
-  handleChangeUsername = value => {
-    this.setState({ username: value });
-  };
-  handleChangePassword = value => {
-    this.setState({ password: value });
+  signUp = () => {
+    const navigation = this.props.navigation;
+    authStore.registerUser(this.state, navigation);
   };
 
   render() {
@@ -35,7 +24,7 @@ export default class SignUp extends React.Component {
           placeholder="Username"
           autoCapitalize="none"
           placeholderTextColor="white"
-          onChangeText={val => this.onChangeText("username", val)}
+          onChangeText={val => this.handleChange("username", val)}
         />
         <TextInput
           style={styles.input}
@@ -43,22 +32,16 @@ export default class SignUp extends React.Component {
           secureTextEntry={true}
           autoCapitalize="none"
           placeholderTextColor="white"
-          onChangeText={val => this.onChangeText("password", val)}
+          onChangeText={val => this.handleChange("password", val)}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
           autoCapitalize="none"
           placeholderTextColor="white"
-          onChangeText={val => this.onChangeText("email", val)}
+          onChangeText={val => this.handleChange("email", val)}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Phone Number"
-          autoCapitalize="none"
-          placeholderTextColor="white"
-          onChangeText={val => this.onChangeText("phone_number", val)}
-        />
+
         <Button title="Sign Up" onPress={this.signUp} />
       </View>
     );
