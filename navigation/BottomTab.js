@@ -2,14 +2,15 @@ import React from "react";
 import { Icon } from "native-base";
 
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
-import LolStack from "./LolStack";
+import PrevOrders from "./PrevListStack";
 import ProfileStack from "./ProfileStack";
+
 import ProductList from "./ProductListStack";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack,
+    PrevTab: PrevOrders,
     List: ProductList
   },
   {
@@ -17,7 +18,7 @@ const BottomTab = createBottomTabNavigator(
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "LolTab") {
+        if (routeName === "PrevTab") {
           iconName = "smiley";
           iconType = "Octicons";
         } else if (routeName === "ProfileTab") {
