@@ -59,7 +59,7 @@ class AuthStore {
 
   logout = navigation => {
     this.setUser();
-    navigation.replace("Login");
+    navigation.navigate("List");
   };
 }
 

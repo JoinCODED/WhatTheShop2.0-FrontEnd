@@ -6,12 +6,14 @@ import PrevOrders from "./PrevListStack";
 import ProfileStack from "./ProfileStack";
 
 import ProductList from "./ProductListStack";
+import LogOut from "../components/Logout";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
     PrevTab: PrevOrders,
-    List: ProductList
+    List: ProductList,
+    LogOut: LogOut
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -27,6 +29,9 @@ const BottomTab = createBottomTabNavigator(
         } else if (routeName === "List") {
           iconName = "list";
           iconType = "Feather";
+        } else if (routeName === "LogOut") {
+          iconName = "logout";
+          iconType = "AntDesign";
         }
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />

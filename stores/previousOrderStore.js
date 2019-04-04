@@ -3,15 +3,15 @@ import axios from "axios";
 
 class PreviousOrderStore {
   previousOrders = null;
-  previousOrder = null;
-  loading = true;
+  // previousOrder = null;
+  // loading = true;
 
   fetchAllPreviousOrders = async () => {
     try {
       let res = await axios.get("http://127.0.0.1:8000/api/prevorders/");
       let previousOrders = res.data;
       this.previousOrders = previousOrders;
-      this.loading = false;
+      // this.loading = false;
     } catch (err) {
       console.error(err);
     }
@@ -19,9 +19,9 @@ class PreviousOrderStore {
 }
 
 decorate(PreviousOrderStore, {
-  previousOrders: observable,
-  previousOrder: observable,
-  loading: observable
+  previousOrders: observable
+  // previousOrder: observable,
+  // loading: observable
 });
 
 let previousOrderStore = new PreviousOrderStore();
