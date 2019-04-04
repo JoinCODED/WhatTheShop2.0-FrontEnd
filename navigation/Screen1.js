@@ -6,7 +6,9 @@ export default class Screen1 extends React.Component {
     drawerLabel: "Screen One",
     drawerIcon: () => (
       <Image
-        source={{ uri: `https://dummyimage.com/60x60/000/fff.jpg&text=1` }}
+        source={{
+          uri: `https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjzz--a27ThAhWLDxQKHb-NBeAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fbeauty%2F&psig=AOvVaw2jfEosmQj4WQ3WrvRSkATf&ust=1554408006312066`
+        }}
         style={{ width: 30, height: 30, borderRadius: 15 }}
       />
     )

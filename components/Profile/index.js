@@ -15,6 +15,7 @@ import {
 //Stores
 import profileStore from "../../stores/profileStore";
 import ProfileCard from "./ProfileCard";
+import authStore from "../../stores/authStore";
 
 class Profile extends Component {
   static navigationOptions = {
@@ -24,16 +25,19 @@ class Profile extends Component {
   componentDidMount() {
     profileStore.GetUserProfile();
   }
+
   render() {
     if (!profileStore.profile) {
-      return <Spinner />;
+      return <Spinner />; // to check the path is going to this component
     }
     console.log("Profile", profileStore.profile);
     return (
       <Card>
         <CardItem>
           <Content>
-            <Text>{profileStore.profile.bio}</Text>
+            <Text>{profileStore.profile}</Text>
+            <Text>{authStore.user.username}</Text>
+            <Text>{authStore.user.userprofile}</Text>
           </Content>
           <Button
             danger

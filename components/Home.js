@@ -1,5 +1,14 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  ImageBackground
+} from "react-native";
+import { Header } from "native-base";
+
 class Home extends React.Component {
   static navigationOptions = {};
   render() {
@@ -12,7 +21,15 @@ class Home extends React.Component {
           alignItems: "center"
         }}
       >
-        <Text>Hello!!! This is Home screen</Text>
+        {/* <ImageBackground
+          source={require("../assets/home.gif")}
+          style={{ width: "100%", height: "100%", resizeMode: "contain" }}
+        /> */}
+        <Header>
+          <Text onPress={() => navigation.navigate("ProductList")}>
+            OneOfOne
+          </Text>
+        </Header>
       </View>
     );
   }

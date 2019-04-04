@@ -5,15 +5,24 @@ import {
   createDrawerNavigator,
   createAppContainer
 } from "react-navigation";
-import LoginScreen from "../components/LoginScreen";
-import SignupScreen from "../components/SignupScreen";
-import ForgottenPasswordScreen from "../components/ForgottenPasswordScreen";
-import Screen1 from "../components/Screen1";
-import Screen2 from "../components/Screen2";
-import Screen3 from "../components/Screen3";
-import DrawerContainer from "../components/DrawerContainer";
+import LoginScreen from "./LoginScreen";
+import SignupScreen from "./SignupScreen";
+import ForgottenPasswordScreen from "./ForgottenPasswordScreen";
+// import Screen1 from "./Screen1";
+// import Screen2 from "./Screen2";
+// import Screen3 from "./Screen3";
+import DrawerContainer from "./DrawerContainer";
 
-// https://github.com/react-community/react-navigation/issues/1254
+//Components
+import ProductList from "../components/ProductList";
+import Profile from "../components/Profile";
+import Home from "../components/Home";
+import Login from "../components/Login";
+import Register from "../components/Register";
+
+//Stores
+import authStore from "../stores/authStore";
+
 const noTransitionConfig = () => ({
   transitionSpec: {
     duration: 0,
@@ -25,9 +34,9 @@ const noTransitionConfig = () => ({
 // drawer stack
 const DrawerStack = createDrawerNavigator(
   {
-    screen1: Screen1,
-    screen2: Screen2,
-    screen3: Screen3
+    ProductList: ProductList, //1
+    Profile: Profile, //2
+    Home: Home //3
   },
   {
     gesturesEnabled: false,
@@ -43,7 +52,7 @@ const DrawerNavigation = createStackNavigator(
     headerMode: "float",
     navigationOptions: ({ navigation }) => ({
       headerStyle: { backgroundColor: "green" },
-      title: "Logged In to your app!",
+      title: `Welcome ${authStore.username}`, //you are logged in
       gesturesEnabled: false,
       headerLeft: (
         <Text onPress={() => navigation.navigate("DrawerOpen")}>Menu</Text>
@@ -55,8 +64,8 @@ const DrawerNavigation = createStackNavigator(
 // login stack
 const LoginStack = createStackNavigator(
   {
-    loginScreen: LoginScreen,
-    signupScreen: SignupScreen,
+    loginScreen: Login,
+    signupScreen: Register,
     forgottenPasswordScreen: {
       screen: ForgottenPasswordScreen,
       navigationOptions: { title: "Forgot Password" }
@@ -74,12 +83,13 @@ const LoginStack = createStackNavigator(
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator(
   {
-    loginStack: LoginStack,
+    home: Home,
+    loginStack: Login,
     drawerStack: DrawerNavigation
   },
   {
     // Default config for all screens
-    headerMode: "none",
+    headerMode: "float",
     title: "Main",
     initialRouteName: "loginStack",
     transitionConfig: noTransitionConfig
@@ -89,3 +99,6 @@ const PrimaryNav = createStackNavigator(
 const AppContainer = createAppContainer(PrimaryNav);
 
 export default AppContainer;
+
+// mode:'modal',
+// navigationOptions..

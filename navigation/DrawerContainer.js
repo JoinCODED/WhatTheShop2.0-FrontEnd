@@ -5,7 +5,6 @@ import { NavigationActions } from "react-navigation";
 export default class DrawerContainer extends React.Component {
   logout = () => {
     // This will reset back to loginStack
-    // https://github.com/react-community/react-navigation/issues/1127
     const actionToDispatch = NavigationActions.reset({
       index: 0,
       key: null, // black magic
@@ -19,22 +18,22 @@ export default class DrawerContainer extends React.Component {
     return (
       <View style={styles.container}>
         <Text
-          onPress={() => navigation.navigate("screen1")}
+          onPress={() => navigation.navigate("ProductList")} //1
           style={styles.uglyDrawerItem}
         >
-          Screen 1
+          Store
         </Text>
         <Text
-          onPress={() => navigation.navigate("screen2")}
+          onPress={() => navigation.navigate("Profile")} //2
           style={styles.uglyDrawerItem}
         >
-          Screen 2
+          Profile
         </Text>
         <Text
-          onPress={() => navigation.navigate("screen3")}
+          onPress={() => navigation.navigate("Home")} //3
           style={styles.uglyDrawerItem}
         >
-          Screen 3
+          Home
         </Text>
         <Text onPress={this.logout} style={styles.uglyDrawerItem}>
           Log Out

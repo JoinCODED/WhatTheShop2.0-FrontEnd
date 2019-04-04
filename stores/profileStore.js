@@ -3,11 +3,10 @@ import axios from "axios";
 
 class ProfileStore {
   profile = null;
-  loading = false;
 
   GetUserProfile = async () => {
     try {
-      let res = await axios.get("http://127.0.0.1:8000/api/profile/");
+      let res = await axios.get("http://127.0.0.1:8000/api/profiles/");
       // this.profile = res.data;
       this.profile = res.data;
     } catch (err) {
