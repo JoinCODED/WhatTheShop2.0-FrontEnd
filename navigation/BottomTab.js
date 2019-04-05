@@ -1,27 +1,28 @@
 import React from "react";
 import { Icon } from "native-base";
 
-import {
-  createBottomTabNavigator,
-  createAppContainer,
-  TabNavigator
-} from "react-navigation";
-import LolStack from "./LolStack";
+
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import PrevOrders from "./PrevListStack";
 import ProfileStack from "./ProfileStack";
-import ProductList from "../components/ProductList";
+
+import ProductList from "./ProductListStack";
+import LogOut from "../components/Logout";
+
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack,
-    List: ProductList
+    PrevTab: PrevOrders,
+    List: ProductList,
+    LogOut: LogOut
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "LolTab") {
+        if (routeName === "PrevTab") {
           iconName = "smiley";
           iconType = "Octicons";
         } else if (routeName === "ProfileTab") {
@@ -30,6 +31,9 @@ const BottomTab = createBottomTabNavigator(
         } else if (routeName === "List") {
           iconName = "list";
           iconType = "Feather";
+        } else if (routeName === "LogOut") {
+          iconName = "logout";
+          iconType = "AntDesign";
         }
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />

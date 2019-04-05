@@ -30,9 +30,11 @@ class Login extends Component {
   };
 
   handleSignup = () => {
-    const navigation = this.props.navigation;
-    authStore.registerUser(this.state, navigation);
+    this.props.navigation.navigate("SignUp");
   };
+  // handleSignup = () => {
+  //   this.props.navigation.navigate("SignUp");
+  // };
 
   render() {
     return (
