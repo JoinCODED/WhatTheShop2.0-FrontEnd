@@ -17,8 +17,9 @@ class ProfileCard extends Component {
         <CardItem>
           <Left>
             <Thumbnail source={{ uri: profile.image }} />
+            <Text>{profiles.user}</Text>
             <Text>{profile.is_seller}</Text>
-            <Text>{profile.bio}</Text>
+            <Text>{profiles.bio}</Text>
 
             <Icon
               type="Ionicons"

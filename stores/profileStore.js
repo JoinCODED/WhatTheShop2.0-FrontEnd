@@ -6,13 +6,32 @@ class ProfileStore {
 
   GetUserProfile = async () => {
     try {
-      let res = await axios.get("http://127.0.0.1:8000/api/profiles/");
+      let res = await axios.get("http://127.0.0.1:8000/api/profile/");
+      // let res = await axios.get(
+      //   `http://127.0.0.1:8000/api/profile/${userID.user_id}/`
+      // );
       // this.profile = res.data;
       this.profile = res.data;
+      console.log(this.profile);
     } catch (err) {
       console.log(err);
     }
   };
+
+  // retraiveUserProfile = async userID => {
+  //   try {
+  //     console.log("BEFOR", userID.pro);
+  //     const res = await axios.get(
+  //       `http://127.0.0.1:8000/api/user/${userID.user_id}/data/`
+  //     );
+  //     console.log("AFTER");
+  //     const user = res.data;
+  //     this.user = user;
+  //     // console.log("this is the user", this.user);
+  //   } catch (error) {
+  //     console.log("error setting profile user", error);
+  //   }
+  // };
 
   //Not sure exactly; something similar to this from Marwa
   // EditUserProfile = async (profile_id, Userdata) => {

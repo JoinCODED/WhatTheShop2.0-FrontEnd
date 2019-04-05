@@ -12,9 +12,11 @@ import {
   Spinner
 } from "native-base";
 
+//Components
+import ProfileCard from "./ProfileCard";
+
 //Stores
 import profileStore from "../../stores/profileStore";
-import ProfileCard from "./ProfileCard";
 import authStore from "../../stores/authStore";
 
 class Profile extends Component {
@@ -31,13 +33,18 @@ class Profile extends Component {
       return <Spinner />; // to check the path is going to this component
     }
     console.log("Profile", profileStore.profile);
+
+    const profile = profileStore.profiles.map(profile => (
+      <ProfileCard profile={profile} key={profile.id} />
+    ));
+
     return (
       <Card>
         <CardItem>
           <Content>
             <Text>{profileStore.profile}</Text>
-            <Text>{authStore.user.username}</Text>
-            <Text>{authStore.user.userprofile}</Text>
+            <Text>{profileStore.user.username}</Text>
+            <Text>{user.username}</Text>
           </Content>
           <Button
             danger
