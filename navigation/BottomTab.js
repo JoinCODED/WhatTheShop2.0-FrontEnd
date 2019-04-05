@@ -10,37 +10,10 @@ import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
 import ProductList from "../components/ProductList";
 
-// const Stack = StackNavigator(
-//   {
-//     ProfileTab: { screen: ProfileStack },
-//     LolTab: { screen: LolStack },
-//     List: { screen: ProductList }
-//   },
-//   { initialRouteName: "ProfileTab" }
-// );
-
-// const Tabs = TabNavigator(
-//   {
-//     TabA: { screen: TabA },
-//     TabB: { screen: TabB },
-//     TabC: { screen: TabC }
-//   },
-//   {
-//     order: ["TabA", "TabB", "TabC"],
-//     animationEnabled: true
-//   }
-// );
-
-// const Drawer = DrawerNavigator({
-//   Stack: { screen: Stack },
-//   Tabs: { screen: Tabs },
-//   Plain: { screen: Plain }
-// });
-
 const BottomTab = createBottomTabNavigator(
   {
-    // ProfileTab: ProfileStack,
-    // LolTab: LolStack,
+    ProfileTab: ProfileStack,
+    LolTab: LolStack,
     List: ProductList
   },
   {

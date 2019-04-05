@@ -1,17 +1,17 @@
-// // REPLACED LOLSTACK...TESTING PROFILE DRAWER
+// REPLACED LOLSTACK...TESTING PROFILE DRAWER
 
-// import { createStackNavigator } from "react-navigation";
-// import LolScreen from "../components/Lol";
+import { createStackNavigator } from "react-navigation";
+import LolScreen from "../components/Lol";
 
-// const LolStack = createStackNavigator(
-//   {
-//     Lol: LolScreen
-//   },
-//   {
-//     defaultNavigationOptions: {
-//       title: "one-of-one"
-//     }
-//   }
-// );
+const LolStack = createStackNavigator(
+  {
+    Lol: LolScreen
+  },
+  {
+    defaultNavigationOptions: {
+      title: "one-of-one"
+    }
+  }
+);
 
-// export default LolStack;
+export default LolStack;

@@ -1,20 +1,20 @@
-// import { createStackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation";
 
-// import ProfileScreen from "../components/Profile";
+import ProfileScreen from "../components/Profile";
 
-// import LoginScreen from "../components/Login";
+import LoginScreen from "../components/Login";
 
-// const ProfileStack = createStackNavigator(
-//   {
-//     Profile: ProfileScreen,
-//     Login: LoginScreen
-//   },
-//   {
-//     initialRouteName: "Login",
-//     defaultNavigationOptions: {
-//       title: "one-of-one"
-//     }
-//   }
-// );
+const ProfileStack = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+    Login: LoginScreen
+  },
+  {
+    initialRouteName: "Login",
+    defaultNavigationOptions: {
+      title: "one-of-one"
+    }
+  }
+);
 
-// export default ProfileStack;
+export default ProfileStack;
