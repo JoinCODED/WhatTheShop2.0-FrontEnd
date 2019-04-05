@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-// import AppContainer from "./navigation/DrawerNavTest";
-import AppContainer from "./navigation/AppNavigation";
+import AppContainer from "./navigation/DrawerNavTest";
+// import AppContainer from "./navigation/AppNavigation";
 
 export default class App extends React.Component {
   render() {

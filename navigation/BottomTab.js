@@ -1,14 +1,12 @@
 import React from "react";
 import { Icon } from "native-base";
 
-
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import PrevOrders from "./PrevListStack";
 import ProfileStack from "./ProfileStack";
 
 import ProductList from "./ProductListStack";
 import LogOut from "../components/Logout";
-
 
 const BottomTab = createBottomTabNavigator(
   {
@@ -53,5 +51,9 @@ const BottomTab = createBottomTabNavigator(
     }
   }
 );
+
+// const AppContainer = createAppContainer(BottomTab);
+
+// export default AppContainer;
 
 export default BottomTab;
