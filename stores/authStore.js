@@ -49,9 +49,8 @@ class AuthStore {
 
   registerUser = async (userData, navigation) => {
     try {
-      await axios.post("http://127.0.0.1:8000/register/", userData);
-      const user = res.data;
-      this.setUser(user.token);
+      await axios.post("http://127.0.0.1:8000/api/register/", userData);
+      this.loginUser(userData, navigation);
       navigation.navigate("List");
     } catch (error) {
       console.log(error);
@@ -60,7 +59,7 @@ class AuthStore {
 
   logout = navigation => {
     this.setUser();
-    navigation.replace("Login");
+    navigation.navigate("List");
   };
 }
 
