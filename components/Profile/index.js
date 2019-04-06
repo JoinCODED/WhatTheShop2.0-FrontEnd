@@ -29,32 +29,37 @@ class Profile extends Component {
   }
 
   render() {
-    if (!profileStore.profile) {
+    if (profileStore.loading) {
       return <Spinner />; // to check the path is going to this component
     }
-    console.log("Profile", profileStore.profile);
+    console.log("Profile", profileStore.profiles);
 
-    const profile = profileStore.profiles.map(profile => (
+    const profileList = profileStore.profiles.map(profile => (
       <ProfileCard profile={profile} key={profile.id} />
     ));
 
     return (
-      <Card>
-        <CardItem>
-          <Content>
+      <>
+        {profileList}
+        <Card>
+          <CardItem>
+            {/* <Content>
             <Text>{profileStore.profile}</Text>
             <Text>{profileStore.user.username}</Text>
             <Text>{user.username}</Text>
-          </Content>
-          <Button
-            danger
-            onPress={() => alert("You need to implement Logout n00b...")}
-          >
-            <Text>Logout</Text>
-          </Button>
-        </CardItem>
-      </Card>
+          </Content> */}
+            <Button
+              danger
+              onPress={() => alert("You need to implement Logout n00b...")}
+            >
+              <Text>Logout</Text>
+            </Button>
+          </CardItem>
+        </Card>
+      </>
     );
   }
 }
 export default observer(Profile);
+
+// get user profile; no need to put an id (based on our backend)

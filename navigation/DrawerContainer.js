@@ -30,6 +30,18 @@ export default class DrawerContainer extends React.Component {
           Profile
         </Text>
         <Text
+          onPress={() => navigation.navigate("PrevList")} //2
+          style={styles.uglyDrawerItem}
+        >
+          PrevList
+        </Text>
+        <Text
+          onPress={() => navigation.navigate("PrevDetail")} //2
+          style={styles.uglyDrawerItem}
+        >
+          PrevDetail
+        </Text>
+        <Text
           onPress={() => navigation.navigate("Home")} //3
           style={styles.uglyDrawerItem}
         >

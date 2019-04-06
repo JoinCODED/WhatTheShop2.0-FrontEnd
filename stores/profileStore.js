@@ -3,16 +3,19 @@ import axios from "axios";
 
 class ProfileStore {
   profile = null;
+  profiles = [];
+  loading = true;
 
   GetUserProfile = async () => {
     try {
-      let res = await axios.get("http://127.0.0.1:8000/api/profile/");
+      let res = await axios.get("http://127.0.0.1:8000/api/profiles/");
       // let res = await axios.get(
       //   `http://127.0.0.1:8000/api/profile/${userID.user_id}/`
       // );
       // this.profile = res.data;
-      this.profile = res.data;
-      console.log(this.profile);
+      this.profiles = res.data;
+      this.loading = false;
+      console.log("I AM THE PROFILE LIST", this.profiles);
     } catch (err) {
       console.log(err);
     }
@@ -45,7 +48,9 @@ class ProfileStore {
 }
 
 decorate(ProfileStore, {
-  profile: observable
+  profile: observable,
+  profiles: observable,
+  loading: observable
 });
 
 const profileStore = new ProfileStore();
