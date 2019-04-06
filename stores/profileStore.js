@@ -6,7 +6,7 @@ class ProfileStore {
   profiles = [];
   loading = true;
 
-  GetUserProfile = async () => {
+  GetProfiles = async () => {
     try {
       let res = await axios.get("http://127.0.0.1:8000/api/profiles/");
       // let res = await axios.get(
@@ -16,6 +16,15 @@ class ProfileStore {
       this.profiles = res.data;
       this.loading = false;
       console.log("I AM THE PROFILE LIST", this.profiles);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  getUserProfile = async () => {
+    try {
+      let res = await axios.get("http://127.0.0.1:8000/api/profile/");
+      this.profile = res.data;
     } catch (err) {
       console.log(err);
     }

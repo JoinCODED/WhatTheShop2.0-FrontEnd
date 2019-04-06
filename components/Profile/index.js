@@ -25,7 +25,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    profileStore.GetUserProfile();
+    profileStore.GetProfiles();
   }
 
   render() {

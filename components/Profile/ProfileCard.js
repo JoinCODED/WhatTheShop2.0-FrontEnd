@@ -41,12 +41,9 @@ class ProfileCard extends Component {
                 </Text>
               </Body>
               <Right>
-                <Button
-                  transparent
-                  onPress={() => this.props.navigate("UserProfile")}
-                >
+                {/* <Button transparent onPress={handlePress}>
                   <Text>View</Text>
-                </Button>
+                </Button> */}
               </Right>
             </ListItem>
           </List>
