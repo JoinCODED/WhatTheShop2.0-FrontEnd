@@ -27,6 +27,7 @@ class AuthStore {
       axios.defaults.headers.common.Authorization = `JWT ${token}`;
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
+      console.log(this.user);
     } else {
       await AsyncStorage.removeItem("myToken");
       delete axios.defaults.headers.common.Authorization;

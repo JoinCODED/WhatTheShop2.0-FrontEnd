@@ -9,6 +9,9 @@ import CartItem from "./CartItem";
 import cartStore from "../../stores/cartStore";
 
 class CartPage extends Component {
+  componentDidMount() {
+    cartStore.fetchCartItems();
+  }
   render() {
     const items = cartStore.items;
     let cartItems;

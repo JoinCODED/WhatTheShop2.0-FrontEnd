@@ -11,8 +11,6 @@ class ProductCard extends Component {
   };
   render() {
     const { product } = this.props;
-    console.log("=================");
-    console.log(product.detail);
     return (
       <Card>
         <CardItem>

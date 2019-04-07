@@ -9,7 +9,7 @@ class CartStore {
     try {
       let res = await axios.get("http://127.0.0.1:8000/api/cart/items/");
       this.items = res.data;
-      console.log(res.data);
+      console.log("Fetching cart items ", res.data);
     } catch (err) {
       console.log(err);
     }

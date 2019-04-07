@@ -12,7 +12,6 @@ class Login extends Component {
     username: "",
     password: ""
   };
-
   static navigationOptions = {
     title: "Login"
   };
@@ -35,6 +34,9 @@ class Login extends Component {
   };
 
   render() {
+    if (authStore.user) {
+      this.props.navigation.navigate("List");
+    }
     return (
       <Form>
         <Item>
