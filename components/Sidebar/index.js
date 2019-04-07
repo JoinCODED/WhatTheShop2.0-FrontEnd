@@ -8,7 +8,7 @@ import {
   ImageBackground,
   Image
 } from "react-native";
-// import styles from "./styles";
+import styles from "./styles";
 import authStore from "../../stores/authStore";
 
 class SideBar extends Component {
@@ -81,8 +81,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SideBar;
-
 //   render() {
 //     return (
 //       <View style={styles.container}>
@@ -126,6 +124,7 @@ export default SideBar;
 //     );
 //   }
 // }
+export default SideBar;
 
 // import React, {
 //   Component,
