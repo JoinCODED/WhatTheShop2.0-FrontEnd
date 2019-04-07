@@ -23,7 +23,13 @@ class UserProfile extends Component {
     title: "UserProfile"
   };
 
+  componentDidMount() {
+    profileStore.getUserProfile();
+  }
+
   render() {
+    const profile = profileStore.profile;
+    console.log(profile);
     return (
       <Container>
         <Header />
@@ -31,20 +37,22 @@ class UserProfile extends Component {
           <Card style={{ flex: 0 }}>
             <CardItem>
               <Left>
-                <Thumbnail source={{ uri: "Image URL" }} />
+                <Thumbnail
+                  source={profile ? { uri: profile.profile.image } : ""}
+                />
                 <Body>
-                  <Text>{profileStore.getUserProfile}</Text>
-                  <Text note>April 15, 2016</Text>
+                  <Text>{profile ? profile.profile.bio : "yiug"}</Text>
+                  <Text note>{profile ? profile.profile.dob : "yiug"}</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem>
               <Body>
                 <Image
-                  source={{ uri: "Image URL" }}
+                  source={profile ? { uri: profile.profile.image } : ""}
                   style={{ height: 200, width: 200, flex: 1 }}
                 />
-                <Text>//Your text here</Text>
+                <Text>{profile ? profile.profile.location : "yiug"}</Text>
               </Body>
             </CardItem>
             <CardItem>
