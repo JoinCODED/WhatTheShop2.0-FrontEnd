@@ -13,11 +13,16 @@ import {
   Left,
   Body
 } from "native-base";
+import { observer } from "mobx-react";
 
 //Stores
 import profileStore from "../../stores/profileStore";
 
 class UserProfile extends Component {
+  static navigationOptions = {
+    title: "UserProfile"
+  };
+
   render() {
     return (
       <Container>
@@ -28,7 +33,7 @@ class UserProfile extends Component {
               <Left>
                 <Thumbnail source={{ uri: "Image URL" }} />
                 <Body>
-                  <Text>NativeBase</Text>
+                  <Text>{profileStore.getUserProfile}</Text>
                   <Text note>April 15, 2016</Text>
                 </Body>
               </Left>

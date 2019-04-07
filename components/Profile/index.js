@@ -48,12 +48,12 @@ class Profile extends Component {
             <Text>{profileStore.user.username}</Text>
             <Text>{user.username}</Text>
           </Content> */}
-            <Button
+            {/* <Button
               danger
               onPress={() => alert("You need to implement Logout n00b...")}
             >
               <Text>Logout</Text>
-            </Button>
+            </Button> */}
           </CardItem>
         </Card>
       </>

@@ -6,10 +6,16 @@ import {
   View,
   StyleSheet,
   ImageBackground,
-  Image
+  Image,
+  Card
 } from "react-native";
-import styles from "./styles";
+import { observer } from "mobx-react";
+
+// import styles from "./styles";
+
+//Stores
 import authStore from "../../stores/authStore";
+import profileStore from "../../stores/profileStore";
 
 class SideBar extends Component {
   navigateToScreen = route => () => {
@@ -23,8 +29,14 @@ class SideBar extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
+        {/* <Card>
+          <Image
+            source={{ uri: {profileStore.image} }}
+            style={{ height: 200, width: 200, flex: 1 }}
+          />
+        </Card> */}
         <Text
-          onPress={() => navigation.navigate("ProductList")} //1
+          onPress={() => navigation.navigate("List")} //1
           style={styles.uglyDrawerItem}
         >
           Store
@@ -41,13 +53,7 @@ class SideBar extends Component {
         >
           PrevList
         </Text>
-        <Text
-          onPress={() => navigation.navigate("PrevDetail")} //2
-          style={styles.uglyDrawerItem}
-        >
-          PrevDetail
-        </Text>
-        <Text
+        {/* <Text
           onPress={() => navigation.navigate("Home")} //3
           style={styles.uglyDrawerItem}
         >
@@ -55,7 +61,7 @@ class SideBar extends Component {
         </Text>
         <Text onPress={this.logout} style={styles.uglyDrawerItem}>
           Log Out
-        </Text>
+        </Text> */}
       </View>
     );
   }
@@ -80,6 +86,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
+
+export default observer(SideBar);
 
 //   render() {
 //     return (
@@ -124,7 +132,6 @@ const styles = StyleSheet.create({
 //     );
 //   }
 // }
-export default SideBar;
 
 // import React, {
 //   Component,
@@ -155,17 +162,3 @@ export default SideBar;
 //     );
 //   }
 // }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: "#7699dd",
-//     padding: 20,
-//     flex: 1
-//   },
-//   button: {
-//     backgroundColor: "white",
-//     borderWidth: 1,
-//     borderColor: "black",
-//     padding: 10
-//   }
-// });

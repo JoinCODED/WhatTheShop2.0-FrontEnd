@@ -18,13 +18,13 @@ export default class DrawerContainer extends React.Component {
     return (
       <View style={styles.container}>
         <Text
-          onPress={() => navigation.navigate("ProductList")} //1
+          onPress={() => navigation.navigate("List")} //1
           style={styles.uglyDrawerItem}
         >
           Store
         </Text>
         <Text
-          onPress={() => navigation.navigate("Profile")} //2
+          onPress={() => navigation.navigate("UserProfile")} //2
           style={styles.uglyDrawerItem}
         >
           Profile
@@ -35,18 +35,18 @@ export default class DrawerContainer extends React.Component {
         >
           PrevList
         </Text>
-        <Text
+        {/* <Text
           onPress={() => navigation.navigate("PrevDetail")} //2
           style={styles.uglyDrawerItem}
         >
           PrevDetail
-        </Text>
-        <Text
+        </Text> */}
+        {/* <Text
           onPress={() => navigation.navigate("Home")} //3
           style={styles.uglyDrawerItem}
         >
           Home
-        </Text>
+        </Text> */}
         <Text onPress={this.logout} style={styles.uglyDrawerItem}>
           Log Out
         </Text>

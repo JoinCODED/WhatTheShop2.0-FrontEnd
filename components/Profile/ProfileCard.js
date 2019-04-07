@@ -13,6 +13,7 @@ import {
   Button
 } from "native-base";
 import { withNavigation } from "react-navigation";
+import profileStore from "../../stores/profileStore";
 
 class ProfileCard extends Component {
   handlePress = () => {
@@ -32,19 +33,14 @@ class ProfileCard extends Component {
           <List>
             <ListItem thumbnail>
               <Left>
-                <Thumbnail square source={{ uri: profile.image }} />
+                <Thumbnail square source={{ uri: profileStore.image }} />
               </Left>
               <Body>
-                <Text>{profile.user}</Text>
+                <Text>{profile.user.username}</Text>
                 <Text note numberOfLines={1}>
                   {profile.bio}
                 </Text>
               </Body>
-              <Right>
-                {/* <Button transparent onPress={handlePress}>
-                  <Text>View</Text>
-                </Button> */}
-              </Right>
             </ListItem>
           </List>
         </Content>
