@@ -3,15 +3,15 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationActions } from "react-navigation";
 
 export default class DrawerContainer extends React.Component {
-  logout = () => {
-    // This will reset back to loginStack
-    const actionToDispatch = NavigationActions.reset({
-      index: 0,
-      key: null, // black magic
-      actions: [NavigationActions.navigate({ routeName: "loginStack" })]
-    });
-    this.props.navigation.dispatch(actionToDispatch);
-  };
+  // logout = () => {
+  //   // This will reset back to loginStack
+  //   const actionToDispatch = NavigationActions.reset({
+  //     index: 0,
+  //     key: null, // black magic
+  //     actions: [NavigationActions.navigate({ routeName: "loginStack" })]
+  //   });
+  //   this.props.navigation.dispatch(actionToDispatch);
+  // };
 
   render() {
     const { navigation } = this.props;

@@ -34,16 +34,16 @@ export default class LoginScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  linky: {
-    fontWeight: "bold",
-    color: "#4C3E54",
-    paddingTop: 10
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center"
+//   },
+//   linky: {
+//     fontWeight: "bold",
+//     color: "#4C3E54",
+//     paddingTop: 10
+//   }
+// });

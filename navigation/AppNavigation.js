@@ -55,15 +55,15 @@ const DrawerNavigation = createStackNavigator(
     DrawerStack: DrawerStack
   },
   {
-    headerMode: "float",
-    navigationOptions: ({ navigation }) => ({
-      headerStyle: { backgroundColor: "green" },
-      title: `Welcome ${authStore.username}`, //you are logged in
-      gesturesEnabled: false,
-      headerLeft: (
-        <Text onPress={() => navigation.navigate("DrawerOpen")}>Menu</Text>
-      )
-    })
+    // headerMode: "float",
+    // navigationOptions: ({ navigation }) => ({
+    //   headerStyle: { backgroundColor: "green" },
+    //   title: `Welcome ${authStore.username}`, //you are logged in
+    //   gesturesEnabled: false,
+    //   headerLeft: (
+    //     <Text onPress={() => navigation.navigate("DrawerOpen")}>Menu</Text>
+    //   )
+    // })
   }
 );
 
@@ -95,7 +95,7 @@ const PrimaryNav = createStackNavigator(
   },
   {
     // Default config for all screens
-    headerMode: "float",
+    headerMode: "modal",
     title: "Main",
     initialRouteName: "loginStack",
     transitionConfig: noTransitionConfig

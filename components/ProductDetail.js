@@ -36,10 +36,11 @@ class ProductDetail extends Component {
   //   title: navigation.getParam("shop", {}).name,
   //   headerRight: <CartButton />
   // });
-  static navigationOptions = {
-    title: "detail",
-    headerRight: <CartButton />
-  };
+
+  // static navigationOptions = {
+  //   title: "detail",
+  //   headerRight: <CartButton />
+  // };
 
   // changeProduct = value => {
   //   this.setState({
