@@ -5,11 +5,22 @@ class CartStore {
   items = [];
   msg = "";
 
+  fetchCartItems = async () => {
+    try {
+      let res = await axios.get("http://127.0.0.1:8000/api/cart/items/");
+      this.items = res.data;
+      console.log("Fetching cart items ", res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   addItemToCart = async item => {
     try {
       let res = await axios.post("http://127.0.0.1:8000/api/addtocart/", item);
       let newItem = res.data;
-      this.items.push(newItem);
+
+      // this.items.push(newItem);
       console.log("THE ITEM IS: ", newItem);
     } catch (err) {
       console.log("ERROR WHILE ADDING TO CART", err);
@@ -30,8 +41,17 @@ class CartStore {
 
   // find method extracts and changes the value in the array automatically. Linked to array
 
-  removeItemFromCart = item => {
+  removeItemFromCart = async item => {
+    console.log(item);
     this.items = this.items.filter(theitem => item !== theitem);
+    try {
+      let res = await axios.delete("http://127.0.0.1:8000/api/addtocart/", {
+        data: {
+          id: item.id
+        }
+      });
+      console.log(res.data);
+    } catch (err) {}
   };
 
   checkoutCart = async () => {
@@ -65,4 +85,6 @@ decorate(CartStore, {
   //   quantity: computed
 });
 
-export default new CartStore();
+const cartStore = new CartStore();
+cartStore.fetchCartItems();
+export default cartStore;

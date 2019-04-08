@@ -16,7 +16,8 @@ import {
   Button,
   CardItem,
   Card,
-  Icon
+  Icon,
+  TouchableOpacity
 } from "native-base";
 
 // // Components
@@ -29,7 +30,9 @@ class ProductDetail extends Component {
   state = {
     product_id: this.props.navigation.getParam("shop").id,
     // option: "",
-    quantity: 1
+    quantity: 1,
+
+    buttonState: false
   };
 
   // static navigationOptions = ({ navigation }) => ({
@@ -56,13 +59,11 @@ class ProductDetail extends Component {
 
   handlePress = () => {
     cartStore.addItemToCart(this.state);
+    this.setState({ buttonState: true });
   };
 
   render() {
     const product = this.props.navigation.getParam("shop");
-    console.log("jygiugiu");
-    console.log(product);
-    console.log(product.name);
 
     return (
       // <>
@@ -88,15 +89,18 @@ class ProductDetail extends Component {
                 style={{ height: 200, width: null, flex: 1 }}
               />
             </CardItem>
-
-            <Body>
-              <Icon
-                type="Ionicons"
-                name="md-add"
-                style={{ color: "Black", marginRigth: 10 }}
-                onPress={this.handlePress}
-              />
-            </Body>
+            <CardItem>
+              {this.state.buttonState || !product.available ? (
+                <Text>ITEM NOT AVAILABLE</Text>
+              ) : (
+                <Button onPress={this.handlePress}>
+                  <Text>
+                    <Icon name="plussquareo" type="AntDesign" />
+                    HELLOO
+                  </Text>
+                </Button>
+              )}
+            </CardItem>
           </Card>
         </Content>
       </>
