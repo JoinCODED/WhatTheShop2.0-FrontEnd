@@ -3,38 +3,50 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationActions } from "react-navigation";
 
 export default class DrawerContainer extends React.Component {
-  logout = () => {
-    // This will reset back to loginStack
-    const actionToDispatch = NavigationActions.reset({
-      index: 0,
-      key: null, // black magic
-      actions: [NavigationActions.navigate({ routeName: "loginStack" })]
-    });
-    this.props.navigation.dispatch(actionToDispatch);
-  };
+  // logout = () => {
+  //   // This will reset back to loginStack
+  //   const actionToDispatch = NavigationActions.reset({
+  //     index: 0,
+  //     key: null, // black magic
+  //     actions: [NavigationActions.navigate({ routeName: "loginStack" })]
+  //   });
+  //   this.props.navigation.dispatch(actionToDispatch);
+  // };
 
   render() {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Text
-          onPress={() => navigation.navigate("ProductList")} //1
+          onPress={() => navigation.navigate("List")} //1
           style={styles.uglyDrawerItem}
         >
           Store
         </Text>
         <Text
-          onPress={() => navigation.navigate("Profile")} //2
+          onPress={() => navigation.navigate("UserProfile")} //2
           style={styles.uglyDrawerItem}
         >
           Profile
         </Text>
         <Text
+          onPress={() => navigation.navigate("PrevList")} //2
+          style={styles.uglyDrawerItem}
+        >
+          PrevList
+        </Text>
+        {/* <Text
+          onPress={() => navigation.navigate("PrevDetail")} //2
+          style={styles.uglyDrawerItem}
+        >
+          PrevDetail
+        </Text> */}
+        {/* <Text
           onPress={() => navigation.navigate("Home")} //3
           style={styles.uglyDrawerItem}
         >
           Home
-        </Text>
+        </Text> */}
         <Text onPress={this.logout} style={styles.uglyDrawerItem}>
           Log Out
         </Text>

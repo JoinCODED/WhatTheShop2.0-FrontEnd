@@ -1,22 +1,26 @@
-// import { createDrawerNavigator, createAppContainer } from "react-navigation";
-// import BottomTab from "./BottomTab";
-// import ProductList from "../components/ProductList";
-// import SideMenu from "../components/Sidebar";
+import { createDrawerNavigator, createAppContainer } from "react-navigation";
+import BottomTab from "./BottomTab";
+import ProductList from "../components/ProductList";
+import SideMenu from "../components/Sidebar";
+import UserProfile from "../components/Profile/UserProfile";
+import PrevOrdersList from "../components/PreviousOrders/PrevOrdersList";
 
-// const Drawer = createDrawerNavigator(
-//   {
-//     Tabs: BottomTab,
-//     List: ProductList
-//   },
-//   {
-//     contentComponent: SideMenu
-//   }
-// );
+const Drawer = createDrawerNavigator(
+  {
+    Tabs: BottomTab,
+    List: ProductList,
+    UserProfile: UserProfile,
+    PrevList: PrevOrdersList
+  },
+  {
+    contentComponent: SideMenu
+  }
+);
 
-// const AppContainer = createAppContainer(Drawer);
+const AppContainer = createAppContainer(Drawer);
 
-// export default AppContainer;
+export default AppContainer;
 
-// // // this.props.navigation.dispatch(DrawerActions.openDrawer());
-// // // this.props.navigation.dispatch(DrawerActions.closeDrawer());
-// // // this.props.navigation.dispatch(DrawerActions.toggleDrawer());
+// // this.props.navigation.dispatch(DrawerActions.openDrawer());
+// // this.props.navigation.dispatch(DrawerActions.closeDrawer());
+// // this.props.navigation.dispatch(DrawerActions.toggleDrawer());

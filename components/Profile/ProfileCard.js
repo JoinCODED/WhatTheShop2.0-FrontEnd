@@ -1,6 +1,19 @@
 import React, { Component } from "react";
-import { Card, CardItem, Thumbnail, Text, Left, Icon } from "native-base";
+import {
+  Container,
+  Header,
+  Content,
+  List,
+  ListItem,
+  Thumbnail,
+  Text,
+  Left,
+  Body,
+  Right,
+  Button
+} from "native-base";
 import { withNavigation } from "react-navigation";
+import profileStore from "../../stores/profileStore";
 
 class ProfileCard extends Component {
   handlePress = () => {
@@ -11,25 +24,27 @@ class ProfileCard extends Component {
 
   render() {
     const { profile } = this.props;
+    console.log("I AM ONE INDIVIDUAL PROFILE", profile);
 
     return (
-      <Card>
-        <CardItem>
-          <Left>
-            <Thumbnail source={{ uri: profile.image }} />
-            <Text>{profiles.user}</Text>
-            <Text>{profile.is_seller}</Text>
-            <Text>{profiles.bio}</Text>
-
-            <Icon
-              type="Ionicons"
-              name="ios-more"
-              style={{ color: "Black", fontSize: 30, marginLeft: 40 }}
-              onPress={this.handlePress}
-            />
-          </Left>
-        </CardItem>
-      </Card>
+      <Container>
+        <Header />
+        <Content>
+          <List>
+            <ListItem thumbnail>
+              <Left>
+                <Thumbnail square source={{ uri: profileStore.image }} />
+              </Left>
+              <Body>
+                <Text>{profile.user.username}</Text>
+                <Text note numberOfLines={1}>
+                  {profile.bio}
+                </Text>
+              </Body>
+            </ListItem>
+          </List>
+        </Content>
+      </Container>
     );
   }
 }

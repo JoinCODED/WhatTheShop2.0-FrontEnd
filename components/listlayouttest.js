@@ -9,6 +9,7 @@ export default class LayoutExample extends Component {
         <Header />
         <Grid>
           <Col style={{ backgroundColor: "#635DB7", height: 200 }} />
+          {productStore.product}
           <Col style={{ backgroundColor: "#00CE9F", height: 200 }} />
         </Grid>
       </Container>

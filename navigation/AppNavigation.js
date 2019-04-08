@@ -12,6 +12,7 @@ import ForgottenPasswordScreen from "./ForgottenPasswordScreen";
 // import Screen2 from "./Screen2";
 // import Screen3 from "./Screen3";
 import DrawerContainer from "./DrawerContainer";
+import BottomTab from "./BottomTab";
 
 //Components
 import ProductList from "../components/ProductList";
@@ -19,6 +20,8 @@ import Profile from "../components/Profile";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import PrevOrdersList from "../components/PreviousOrders/PrevOrdersList";
+import PrevOrdersDetail from "../components/PreviousOrders/PrevOrdersDetail";
 
 //Stores
 import authStore from "../stores/authStore";
@@ -36,7 +39,10 @@ const DrawerStack = createDrawerNavigator(
   {
     ProductList: ProductList, //1
     Profile: Profile, //2
-    Home: Home //3
+    PrevList: PrevOrdersList,
+    PrevDetail: PrevOrdersDetail,
+    Home: Home, //3
+    Tabs: BottomTab
   },
   {
     gesturesEnabled: false,
@@ -49,15 +55,15 @@ const DrawerNavigation = createStackNavigator(
     DrawerStack: DrawerStack
   },
   {
-    headerMode: "float",
-    navigationOptions: ({ navigation }) => ({
-      headerStyle: { backgroundColor: "green" },
-      title: `Welcome ${authStore.username}`, //you are logged in
-      gesturesEnabled: false,
-      headerLeft: (
-        <Text onPress={() => navigation.navigate("DrawerOpen")}>Menu</Text>
-      )
-    })
+    // headerMode: "float",
+    // navigationOptions: ({ navigation }) => ({
+    //   headerStyle: { backgroundColor: "green" },
+    //   title: `Welcome ${authStore.username}`, //you are logged in
+    //   gesturesEnabled: false,
+    //   headerLeft: (
+    //     <Text onPress={() => navigation.navigate("DrawerOpen")}>Menu</Text>
+    //   )
+    // })
   }
 );
 
@@ -89,7 +95,7 @@ const PrimaryNav = createStackNavigator(
   },
   {
     // Default config for all screens
-    headerMode: "float",
+    headerMode: "modal",
     title: "Main",
     initialRouteName: "loginStack",
     transitionConfig: noTransitionConfig
