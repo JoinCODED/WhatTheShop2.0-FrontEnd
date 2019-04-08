@@ -47,7 +47,6 @@ class Galleries extends Component {
     headerRight: <CartButton />
   };
 
-
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -68,18 +67,15 @@ class Galleries extends Component {
 
   addProductToCart = () => {
     Alert.alert("Success", "The product has been added to your cart");
-
   };
   handlePress = item => {
     this.props.navigation.navigate("Detail", {
       shop: item
     });
-
   };
 
   render() {
     // console.log("PRODUCTS", ProductStore.products);
-
 
     const products = ProductStore.products;
 
@@ -98,9 +94,7 @@ class Galleries extends Component {
         <FlatList
           style={styles.list}
           contentContainerStyle={styles.listContainer}
-
           data={products}
-
           horizontal={false}
           numColumns={2}
           listKey={(item, index) => {
@@ -114,7 +108,6 @@ class Galleries extends Component {
             console.log("ITEM", item.image);
             return (
               <View style={styles.card}>
-
                 <TouchableOpacity
                   style={styles.socialBarButton}
                   onPress={() => this.handlePress(post.item)}
@@ -128,12 +121,7 @@ class Galleries extends Component {
                   <View style={styles.socialBarContainer}>
                     <View style={styles.socialBarSection}>
                       <AddToCart product={item} />
-// =======
-//                 <Image style={styles.cardImage} source={{ uri: item.image }} />
-//                 <View style={styles.cardFooter}>
-//                   <View style={styles.socialBarContainer}>
-//                     <View style={styles.socialBarSection}>
-// >>>>>>> master
+
                       <TouchableOpacity
                         style={styles.socialBarButton}
                         onPress={() => this.addProductToCart()}

@@ -8,15 +8,12 @@ import ProfileStack from "./ProfileStack";
 import ProductList from "./ProductListStack";
 import LogOut from "../components/Logout";
 
-
-
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
     PrevTab: PrevOrders,
     List: ProductList,
-    LogOut: LogOut,
-    Galleries: Galleries
+    LogOut: LogOut
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
