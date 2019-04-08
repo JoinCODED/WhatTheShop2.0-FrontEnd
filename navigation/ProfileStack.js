@@ -1,19 +1,21 @@
 import { createStackNavigator } from "react-navigation";
 
 import ProfileScreen from "../components/Profile";
-import React from "react";
 
 import LoginScreen from "../components/Login";
-import { Icon } from "native-base";
+import SignUp from "../components/Register";
+import UserProfile from "../components/Profile/UserProfile";
+
 const ProfileStack = createStackNavigator(
   {
-    Profile: ProfileScreen,
-    Login: LoginScreen
+    Profile: UserProfile,
+    Login: LoginScreen,
+    SignUp: SignUp
   },
   {
     initialRouteName: "Login",
     defaultNavigationOptions: {
-      title: "WhatTheShop"
+      title: "one-of-one"
     }
   }
 );

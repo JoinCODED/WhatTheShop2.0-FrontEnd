@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import AppContainer from "./navigation/DrawerNavTest";
-// import AppContainer from "./navigation/AppNavigation";
 
-export default class App extends React.Component {
+export default class ForgottenPasswordScreen extends React.Component {
   render() {
-    return <AppContainer />;
+    return (
+      <View style={styles.container}>
+        <Text>I am Forgotten Password</Text>
+      </View>
+    );
   }
 }
 
