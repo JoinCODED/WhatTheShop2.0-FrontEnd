@@ -1,6 +1,6 @@
 import { createDrawerNavigator, createAppContainer } from "react-navigation";
 import BottomTab from "./BottomTab";
-import ProductList from "../components/ProductList";
+import ProductListStack from "./ProductListStack";
 import SideMenu from "../components/Sidebar";
 import UserProfile from "../components/Profile/UserProfile";
 import PrevOrdersList from "../components/PreviousOrders/PrevOrdersList";
@@ -8,7 +8,7 @@ import PrevOrdersList from "../components/PreviousOrders/PrevOrdersList";
 const Drawer = createDrawerNavigator(
   {
     Tabs: BottomTab,
-    List: ProductList,
+    List: ProductListStack,
     UserProfile: UserProfile,
     PrevList: PrevOrdersList
   },

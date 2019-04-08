@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 import { Image } from "react-native";
 import defimage from "../assets/defimage.png";
+import AddToCart from "./AddToCart";
 
 // NativeBase Components
 import {
@@ -30,15 +31,14 @@ class ProductDetail extends Component {
   state = {
     product_id: this.props.navigation.getParam("shop").id,
     // option: "",
-    quantity: 1,
+    // quantity: 1,
 
     buttonState: false
   };
 
-  // static navigationOptions = ({ navigation }) => ({
-  //   title: navigation.getParam("shop", {}).name,
-  //   headerRight: <CartButton />
-  // });
+  static navigationOptions = {
+    headerRight: <CartButton />
+  };
 
   // static navigationOptions = {
   //   title: "detail",
@@ -64,6 +64,7 @@ class ProductDetail extends Component {
 
   render() {
     const product = this.props.navigation.getParam("shop");
+    console.log("product INFO", product);
 
     return (
       // <>
@@ -89,18 +90,7 @@ class ProductDetail extends Component {
                 style={{ height: 200, width: null, flex: 1 }}
               />
             </CardItem>
-            <CardItem>
-              {this.state.buttonState || !product.available ? (
-                <Text>ITEM NOT AVAILABLE</Text>
-              ) : (
-                <Button onPress={this.handlePress}>
-                  <Text>
-                    <Icon name="plussquareo" type="AntDesign" />
-                    HELLOO
-                  </Text>
-                </Button>
-              )}
-            </CardItem>
+            <AddToCart product={product} />
           </Card>
         </Content>
       </>
