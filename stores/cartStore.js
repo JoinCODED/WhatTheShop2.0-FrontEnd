@@ -1,6 +1,7 @@
 import { decorate, observable, computed } from "mobx";
 import axios from "axios";
 
+import ProductStore from "./ProductStore";
 class CartStore {
   items = [];
   msg = "";
@@ -19,7 +20,7 @@ class CartStore {
     try {
       let res = await axios.post("http://127.0.0.1:8000/api/addtocart/", item);
       let newItem = res.data;
-
+      ProductStore.fetchAllProducts();
       // this.items.push(newItem);
       console.log("THE ITEM IS: ", newItem);
     } catch (err) {
@@ -50,6 +51,9 @@ class CartStore {
           id: item.id
         }
       });
+      // this.fetchCartItems();
+      ProductStore.fetchAllProducts();
+
       console.log(res.data);
     } catch (err) {}
   };

@@ -1,3 +1,30 @@
+// import React, { Component } from "react";
+// import ProductCard from "./ProductCard";
+// import productStore from "../../stores/ProductStore";
+// import { observer } from "mobx-react";
+// import { Content, List } from "native-base";
+
+// class ProductList extends Component {
+//   static navigationOptions = {
+//     title: "Product-List"
+//     // headerLeft: null
+//   };
+
+//   render() {
+//     const products = productStore.products.map(product => (
+//       <ProductCard product={product} key={product.id} />
+//     ));
+
+//     return (
+//       <Content>
+//         <List>{products}</List>
+//       </Content>
+//     );
+//   }
+// }
+
+// export default observer(ProductList);
+
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -12,7 +39,15 @@ import {
 import { observer } from "mobx-react";
 import ProductStore from "../../stores/ProductStore";
 
+import CartButton from "../CartButton";
+import AddToCart from "../AddToCart";
+
 class Galleries extends Component {
+  static navigationOptions = {
+    headerRight: <CartButton />
+  };
+
+
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -33,11 +68,21 @@ class Galleries extends Component {
 
   addProductToCart = () => {
     Alert.alert("Success", "The product has been added to your cart");
+
+  };
+  handlePress = item => {
+    this.props.navigation.navigate("Detail", {
+      shop: item
+    });
+
   };
 
   render() {
     // console.log("PRODUCTS", ProductStore.products);
+
+
     const products = ProductStore.products;
+
     const data = products.map(product => ({
       id: product.id,
       likes: 40,
@@ -53,7 +98,9 @@ class Galleries extends Component {
         <FlatList
           style={styles.list}
           contentContainerStyle={styles.listContainer}
-          data={data}
+
+          data={products}
+
           horizontal={false}
           numColumns={2}
           listKey={(item, index) => {
@@ -67,10 +114,26 @@ class Galleries extends Component {
             console.log("ITEM", item.image);
             return (
               <View style={styles.card}>
-                <Image style={styles.cardImage} source={{ uri: item.image }} />
+
+                <TouchableOpacity
+                  style={styles.socialBarButton}
+                  onPress={() => this.handlePress(post.item)}
+                >
+                  <Image
+                    style={styles.cardImage}
+                    source={{ uri: item.image }}
+                  />
+                </TouchableOpacity>
                 <View style={styles.cardFooter}>
                   <View style={styles.socialBarContainer}>
                     <View style={styles.socialBarSection}>
+                      <AddToCart product={item} />
+// =======
+//                 <Image style={styles.cardImage} source={{ uri: item.image }} />
+//                 <View style={styles.cardFooter}>
+//                   <View style={styles.socialBarContainer}>
+//                     <View style={styles.socialBarSection}>
+// >>>>>>> master
                       <TouchableOpacity
                         style={styles.socialBarButton}
                         onPress={() => this.addProductToCart()}

@@ -23,9 +23,9 @@ class CartItem extends Component {
             {item.option}
           </Text> */}
         </Left>
-        <Body>
+        {/* <Body>
           <Text style={{ color: "black" }}>{item.quantity}</Text>
-        </Body>
+        </Body> */}
         <Right>
           <Button transparent onPress={this.deletePress}>
             <Icon name="trash" style={{ color: "black", fontSize: 21 }} />
