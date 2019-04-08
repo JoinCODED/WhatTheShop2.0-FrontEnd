@@ -30,6 +30,7 @@ class UserProfile extends Component {
   render() {
     const profile = profileStore.profile;
     console.log(profile);
+
     return (
       <Container>
         <Header />
@@ -49,10 +50,12 @@ class UserProfile extends Component {
             <CardItem>
               <Body>
                 <Image
+
                   source={profile ? { uri: profile.profile.image } : ""}
                   style={{ height: 200, width: 200, flex: 1 }}
                 />
                 <Text>{profile ? profile.profile.location : "yiug"}</Text>
+
               </Body>
             </CardItem>
             <CardItem>

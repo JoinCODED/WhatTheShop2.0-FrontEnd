@@ -8,12 +8,15 @@ import ProfileStack from "./ProfileStack";
 import ProductList from "./ProductListStack";
 import LogOut from "../components/Logout";
 
+
+
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
     PrevTab: PrevOrders,
     List: ProductList,
-    LogOut: LogOut
+    LogOut: LogOut,
+    Galleries: Galleries
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -31,6 +34,9 @@ const BottomTab = createBottomTabNavigator(
           iconType = "Feather";
         } else if (routeName === "LogOut") {
           iconName = "logout";
+          iconType = "AntDesign";
+        } else if (routeName === "Galleries") {
+          iconName = "list";
           iconType = "AntDesign";
         }
         return (
