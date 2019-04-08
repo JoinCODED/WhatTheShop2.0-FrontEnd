@@ -12,7 +12,6 @@ class CartItem extends Component {
 
   render() {
     const { item } = this.props;
-    console.log(item);
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>

@@ -2,7 +2,7 @@ import { decorate, observable } from "mobx";
 import axios from "axios";
 
 class ProductStore {
-  products = null;
+  products = [];
   product = null;
   loading = true;
 
@@ -10,7 +10,7 @@ class ProductStore {
     try {
       let res = await axios.get("http://127.0.0.1:8000/api/list/");
       let products = res.data;
-      console.log(products);
+      console.log("fetchAllProducts", products);
       this.products = products;
       this.loading = false;
     } catch (err) {

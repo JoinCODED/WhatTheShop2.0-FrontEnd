@@ -11,7 +11,6 @@ class ProductList extends Component {
   };
 
   render() {
-    console.log("xD");
     const products = productStore.products.map(product => (
       <ProductCard product={product} key={product.id} />
     ));

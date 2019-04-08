@@ -63,9 +63,6 @@ class ProductDetail extends Component {
 
   render() {
     const product = this.props.navigation.getParam("shop");
-    console.log("jygiugiu");
-    console.log(product);
-    console.log(product.name);
 
     return (
       // <>

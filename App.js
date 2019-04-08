@@ -5,7 +5,6 @@ import AppContainer from "./navigation/AppNavigation";
 
 export default class App extends React.Component {
   render() {
-    console.log("test");
     return <AppContainer />;
   }
 }
