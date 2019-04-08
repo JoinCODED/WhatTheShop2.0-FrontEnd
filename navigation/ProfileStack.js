@@ -4,10 +4,11 @@ import ProfileScreen from "../components/Profile";
 
 import LoginScreen from "../components/Login";
 import SignUp from "../components/Register";
+import UserProfile from "../components/Profile/UserProfile";
 
 const ProfileStack = createStackNavigator(
   {
-    Profile: ProfileScreen,
+    Profile: UserProfile,
     Login: LoginScreen,
     SignUp: SignUp
   },

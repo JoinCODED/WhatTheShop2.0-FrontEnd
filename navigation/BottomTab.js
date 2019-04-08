@@ -7,7 +7,8 @@ import ProfileStack from "./ProfileStack";
 
 import ProductList from "./ProductListStack";
 import LogOut from "../components/Logout";
-import Galleries from "../components/NewListProd/ListCard";
+
+
 
 const BottomTab = createBottomTabNavigator(
   {
