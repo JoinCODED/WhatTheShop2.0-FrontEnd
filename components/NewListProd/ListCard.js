@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingHorizontal: 5,
-    backgroundColor: "rgb(209,224,245)"
+    backgroundColor: "#E6E6E6"
   },
   listContainer: {
     alignItems: "center"
