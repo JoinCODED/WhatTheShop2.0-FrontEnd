@@ -1,100 +1,73 @@
-import { decorate, observable, action, computed } from "mobx";
+import { observable, decorate } from "mobx";
 import axios from "axios";
-import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
+import { AsyncStorage } from "react-native";
 
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
-});
+class AuthStore {
+  user = null;
 
-class Store {
-  constructor() {
-    this.user = null;
-  }
+  loginUser = async (userData, navigation) => {
+    try {
+      const res = await axios.post(
+        "http://127.0.0.1:8000/api/login/",
+        userData
+      );
+      const user = res.data;
+      this.setUser(user.token);
 
-  setAuthToken(token) {
-    if (token) {
-      // Apply to every request
-      axios.defaults.headers.common["Authorization"] = `JWT ${token}`;
-    } else {
-      delete axios.defaults.headers.common["Authorization"];
+      navigation.navigate("Profile");
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
-  setCurrentUser(decoded) {
+  setUser = async token => {
     if (token) {
-      // Decode token to get user data
+      await AsyncStorage.setItem("myToken", token);
+      axios.defaults.headers.common.Authorization = `JWT ${token}`;
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
+      console.log(this.user);
     } else {
+      await AsyncStorage.removeItem("myToken");
+      delete axios.defaults.headers.common.Authorization;
       this.user = null;
     }
-  }
+  };
 
-  logoutUser() {
-    AsyncStorage.removeItem("jwtToken").then(
-      () => {
-        this.setCurrentUser();
-        this.setAuthToken();
-      },
-      () => {
-        console.log("something went wrong with logging out");
+  checkForUser = async () => {
+    const token = await AsyncStorage.getItem("myToken");
+    if (token) {
+      const currentDate = Date.now() / 1000;
+      const user = jwt_decode(token);
+      if (user.exp >= currentDate) {
+        this.setUser(token);
+      } else {
+        this.setUser();
       }
-    );
-  }
+    }
+  };
 
-  loginUser(username, password) {
-    const userData = {
-      username: username,
-      password: password
-    };
-    instance
-      .post("/api/login/", userData)
-      .then(res => res.data)
-      .then(user => {
-        const { token } = user;
-        // Save token to localStorage
-        AsyncStorage.setItem("jwtToken", token).then(
-          () => {
-            // Set token to Auth header
-            this.setAuthToken(token);
+  registerUser = async (userData, navigation) => {
+    try {
+      await axios.post("http://127.0.0.1:8000/api/register/", userData);
+      this.loginUser(userData, navigation);
+      navigation.navigate("List");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-            // Set current user
-            this.setCurrentUser(token);
-          },
-          () => console.log("something went wrong with setting jwt token")
-        );
-      })
-      .catch(err => console.log("something went wrong logging in"));
-  }
-
-  checkForToken = () => {
-    AsyncStorage.getItem("jwtToken")
-      .then(token => {
-        if (token) {
-          const currentTime = Date.now() / 1000;
-
-          // Decode token and get user info
-          const decodedUser = jwt_decode(token);
-
-          // Check token expiration
-          if (decodedUser.exp >= currentTime) {
-            // Set auth token header
-            this.setAuthToken(token);
-            // Set user and isAuthenticated
-            this.setCurrentUser(decodedUser);
-          } else {
-            this.logoutUser();
-            // Redirect to login
-          }
-        }
-      })
-      .catch(err => console.error(err));
+  logout = navigation => {
+    this.setUser();
+    navigation.navigate("List");
   };
 }
 
-decorate(Store, {
+decorate(AuthStore, {
   user: observable
 });
 
-export default new Store();
+const authStore = new AuthStore();
+authStore.checkForUser();
+export default authStore;
