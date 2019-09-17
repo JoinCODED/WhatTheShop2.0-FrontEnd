@@ -31,10 +31,7 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
-        >
+        <Button onPress={() => navigation.navigate{"ItemList"}}>
           <Text>Login</Text>
         </Button>
       </Form>

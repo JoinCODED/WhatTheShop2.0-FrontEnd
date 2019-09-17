@@ -15,7 +15,7 @@ class AuthStore {
       // Save token to localStorage
       await AsyncStorage.setItem("myToken", token);
       // Set token to Auth header
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      axios.defaults.headers.common.Authorization = `JWT ${token}`;
       // Set current user
       this.user = jwt_decode(token);
     } else {
@@ -25,13 +25,14 @@ class AuthStore {
     }
   };
 
-  login = async userData => {
+  login = async (userData, history) => {
     try {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
-      this.setUser(user.access);
+      this.setUser(user.token);
+      history.replace("/");
     } catch (err) {
-      console.log("something went wrong logging in");
+      console.error(err.response.data);
     }
   };
 
