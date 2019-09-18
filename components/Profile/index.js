@@ -1,5 +1,5 @@
 import React from "react";
-
+import authStore from "../../stores/authStore";
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
 
@@ -9,7 +9,20 @@ const Profile = () => {
       <CardItem>
         <Button
           danger
-          onPress={() => alert("You need to implement Logout n00b...")}
+          onPress={() => {
+            authStore.login;
+          }}
+        >
+          <Text>Login</Text>
+        </Button>
+      </CardItem>
+
+      <CardItem>
+        <Button
+          danger
+          onPress={() => {
+            authStore.logout;
+          }}
         >
           <Text>Logout</Text>
         </Button>
