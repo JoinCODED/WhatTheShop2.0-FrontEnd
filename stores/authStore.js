@@ -25,18 +25,31 @@ class AuthStore {
     }
   };
 
-  login = async userData => {
+  login = async (userData, navigation) => {
     try {
-      const res = await instance.post("/api/login/", userData);
+      const res = await instance.post("/login/", userData);
       const user = res.data;
-      this.setUser(user.access);
+      await this.setUser(user.access);
+      navigation.replace("ListScreen");
     } catch (err) {
       console.log("something went wrong logging in");
     }
   };
 
-  logout = () => {
-    this.setUser();
+  register = async (userData, navigation) => {
+    try {
+      const res = await instance.post("register/", userData);
+      const user = res.data;
+      await this.setUser(user.access);
+      navigation.replace("ListScreen");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  logout = async navigation => {
+    await this.setUser();
+    navigation.navigate("Login");
   };
 
   checkForToken = async () => {
