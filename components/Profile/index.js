@@ -1,20 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 
-// NativeBase Components
-import { Card, CardItem, Text, Button } from "native-base";
+import { Card, CardItem, Text } from "native-base";
 
-const Profile = () => {
-  return (
-    <Card>
-      <CardItem>
-        <Button
-          danger
-          onPress={() => alert("You need to implement Logout n00b...")}
-        >
-          <Text>Logout</Text>
-        </Button>
-      </CardItem>
-    </Card>
-  );
-};
+import ProfilePage from "./ProfilePage";
+
+class Profile extends Component {
+  render() {
+    return (
+      <Card>
+        <CardItem>
+          <ProfilePage navigation={this.props.navigation} />
+        </CardItem>
+      </Card>
+    );
+  }
+}
 export default Profile;
