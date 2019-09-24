@@ -8,16 +8,13 @@ import { Form, Item, Input, Button, Text } from "native-base";
 import authStore from "../../stores/authStore";
 import { withNavigation } from "react-navigation";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     username: "",
     password: ""
   };
 
   render() {
-    if (authStore.user) {
-      return this.props.navigation.replace("Profile");
-    }
     return (
       <Form>
         <Item>
@@ -35,18 +32,15 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
+
         <Button
           full
-          onPress={() => authStore.login(this.state, this.props.navigation)}
+          onPress={() => authStore.signup(this.state, this.props.navigation)}
         >
-          <Text>Login</Text>
-        </Button>
-
-        <Button full onPress={() => this.props.navigation.replace("Register")}>
           <Text>Register</Text>
         </Button>
       </Form>
     );
   }
 }
-export default withNavigation(observer(Login));
+export default withNavigation(observer(Register));

@@ -9,8 +9,8 @@ import Login from "../components/Login";
 
 const BottomTab = createBottomTabNavigator(
   {
-    ProfileTab: ProfileStack,
-    LolTab: LolStack
+    ProfileTab: LolStack,
+    LolTab: ProfileStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -44,3 +44,33 @@ const BottomTab = createBottomTabNavigator(
 );
 
 export default BottomTab;
+
+// import React, { Component } from "react";
+// import {
+//   createDrawerNavigator,
+//   createAppContainer
+// } from "react-navigation-drawer";
+
+// // Components pages
+// import BanakList from "../components/BanakList";
+// import Login from "../components/Login";
+
+// const MyDrawerNavigator = createDrawerNavigator(
+//   {
+//     BanakList: { screen: BanakList },
+//     Login: { screen: Login }
+//   },
+//   {
+//     initialRouteName: "BanakList",
+//     drawerWidth: 300,
+//     drawerPosition: "left"
+//   }
+// );
+
+// const AppContainer = createAppContainer(MyDrawerNavigator);
+
+// export default class DrawerNavigator extends Component {
+//   render() {
+//     return <AppContainer />;
+//   }
+// }
