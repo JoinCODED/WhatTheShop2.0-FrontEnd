@@ -1,20 +1,21 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Card, CardItem, Text, Button } from "native-base";
+import { Card, CardItem, Text, Button, Content } from "native-base";
+import LogoutButton from "../Buttons/LogoutButton";
+import authStore from "../../stores/authStore";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
+  if (!authStore.user) navigation.replace("Login");
   return (
-    <Card>
-      <CardItem>
-        <Button
-          danger
-          onPress={() => alert("You need to implement Logout n00b...")}
-        >
-          <Text>Logout</Text>
-        </Button>
-      </CardItem>
-    </Card>
+    <Content>
+      <Card>
+        <CardItem>
+          <LogoutButton />
+        </CardItem>
+      </Card>
+    </Content>
   );
 };
-export default Profile;
+export default observer(Profile);
