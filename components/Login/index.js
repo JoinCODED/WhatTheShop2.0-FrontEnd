@@ -9,18 +9,20 @@ import authStore from "../../stores/authStore";
 
 class Login extends Component {
   state = {
-    username: "",
+    email: "",
     password: ""
   };
 
   render() {
+    const { navigation } = this.props;
+    if (authStore.user) navigation.replace("Profile");
     return (
       <Form>
         <Item>
           <Input
-            placeholder="Username"
+            placeholder="Email"
             autoCapitalize="none"
-            onChangeText={username => this.setState({ username })}
+            onChangeText={email => this.setState({ email })}
           />
         </Item>
         <Item last>
@@ -31,11 +33,16 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
-        >
+        <Button full onPress={() => authStore.login(this.state, navigation)}>
           <Text>Login</Text>
+        </Button>
+        <Text>Click here to signup </Text>
+        <Button
+          success
+          full
+          onPress={() => this.props.navigation.replace("Signup")}
+        >
+          <Text>Signup</Text>
         </Button>
       </Form>
     );
