@@ -2,10 +2,21 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Form, Item, Input, Button, Text } from "native-base";
+import {
+  List,
+  Content,
+  Spinner,
+  View,
+  Button,
+  Image,
+  Left,
+  TouchableHighlight,
+  Text
+} from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
+import { withNavigation } from "react-navigation";
 
 class Login extends Component {
   state = {
@@ -14,6 +25,10 @@ class Login extends Component {
   };
 
   render() {
+    if (authStore.loading) return <Spinner />;
+    // if (authStore.user) {
+    //   return this.props.navigation.replace("Profile");
+    // }
     return (
       <Form>
         <Item>
@@ -33,12 +48,16 @@ class Login extends Component {
         </Item>
         <Button
           full
-          onPress={() => alert("You need to implement Login noob...")}
+          onPress={() => authStore.login(this.state, this.props.navigation)}
         >
           <Text>Login</Text>
         </Button>
+
+        {/* <Button full onPress={() => this.props.navigation.replace("Register")}>
+          <Text>Register</Text>
+        </Button> */}
       </Form>
     );
   }
 }
-export default observer(Login);
+export default withNavigation(observer(Login));
