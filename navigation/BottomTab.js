@@ -3,38 +3,39 @@ import { Icon } from "native-base";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
 // Navigators
-import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
-import Login from "../components/Login";
-
+import CarStack from "./CarStack";
+import Splash from "../components/Splash";
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack
+    CarTab: CarStack,
+    Splash: { screen: Splash }
+    // DetailTab: CarDetail
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
-        let iconName;
-        if (routeName === "LolTab") {
-          iconName = "smiley";
-          iconType = "Octicons";
-        } else if (routeName === "ProfileTab") {
+        let iconName, iconType;
+        if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
+        } else if (routeName === "CarTab") {
+          iconName = "menu";
         }
         return (
-          <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
+          <Icon name={iconName} style={{ color: "white" }} type={iconType} />
         );
       }
     }),
+    initialRouteName: "Splash",
     tabBarOptions: {
-      showLabel: false,
-      activeTintColor: "#6200EE",
-      inactiveTintColor: "#858585",
+      showLabel: true,
+      activeTintColor: "white",
+      inactiveTintColor: "white",
       style: {
-        backgroundColor: "white"
+        backgroundColor: "#0f0a3c"
       },
       labelStyle: {
         fontSize: 12
