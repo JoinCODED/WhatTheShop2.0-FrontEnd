@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { withNavigation } from "react-navigation";
 
 // NativeBase Components
-import { Form, Item, Input, Button, Text } from "native-base";
+import { Container, Button, Form, Item, Input, Text } from "native-base";
+//import { Button } from "react-native";
 
 // Store
 import authStore from "../../stores/authStore";
+import Register from "../Register";
 
 class Login extends Component {
   state = {
@@ -14,31 +17,45 @@ class Login extends Component {
   };
 
   render() {
+    if (authStore.user) {
+      return this.props.navigation.replace("Profile");
+    }
     return (
-      <Form>
-        <Item>
-          <Input
-            placeholder="Username"
-            autoCapitalize="none"
-            onChangeText={username => this.setState({ username })}
-          />
-        </Item>
-        <Item last>
-          <Input
-            placeholder="Password"
-            autoCapitalize="none"
-            secureTextEntry={true}
-            onChangeText={password => this.setState({ password })}
-          />
-        </Item>
+      <Container>
+        <Form>
+          <Item>
+            <Input
+              placeholder="Username"
+              autoCapitalize="none"
+              onChangeText={username => this.setState({ username })}
+            />
+          </Item>
+          <Item last>
+            <Input
+              placeholder="Password"
+              autoCapitalize="none"
+              secureTextEntry={true}
+              onChangeText={password => this.setState({ password })}
+            />
+          </Item>
+        </Form>
         <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
+          block
+          primary
+          onPress={() => authStore.login(this.state, this.props.navigation)}
         >
-          <Text>Login</Text>
+          <Text style={{ color: "white" }}>Login</Text>
         </Button>
-      </Form>
+        <Text>Don't have an account? Register below!</Text>
+        <Button
+          block
+          primary
+          onPress={() => this.props.navigation.navigate("Register")}
+        >
+          <Text style={{ color: "white" }}>Register</Text>
+        </Button>
+      </Container>
     );
   }
 }
-export default observer(Login);
+export default withNavigation(observer(Login));
