@@ -2,40 +2,27 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import {
-  List,
-  Content,
-  Spinner,
-  View,
-  Button,
-  Image,
-  Left,
-  TouchableHighlight,
-  Text,
-  Form,
-  Item,
-  Input,
-  Container,
-  Card,
-  Icon
-} from "native-base";
+// import { Form, Item, Input, Button, Text } from "native-base";
+import { Item, Input, Button, Text, Icon, Container, Card } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
 import { withNavigation } from "react-navigation";
-import BanakModal from "../BanakModal";
-//
-class Login extends Component {
+
+class Register extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    first_name: "",
+    last_name: ""
   };
 
+  signupUser() {
+    authStore.signup(this.state, this.props.navigation);
+    console.log(this.state);
+  }
+
   render() {
-    if (authStore.loading) return <Spinner />;
-    // if (authStore.user) {
-    //   return this.props.navigation.replace("Profile");
-    // }
     return (
       // <Form>
       //   <Item>
@@ -43,6 +30,20 @@ class Login extends Component {
       //       placeholder="Username"
       //       autoCapitalize="none"
       //       onChangeText={username => this.setState({ username })}
+      //     />
+      //   </Item>
+      //   <Item>
+      //     <Input
+      //       placeholder="First Name"
+      //       autoCapitalize="none"
+      //       onChangeText={first_name => this.setState({ first_name })}
+      //     />
+      //   </Item>
+      //   <Item>
+      //     <Input
+      //       placeholder="Last Name"
+      //       autoCapitalize="none"
+      //       onChangeText={last_name => this.setState({ last_name })}
       //     />
       //   </Item>
       //   <Item last>
@@ -53,15 +54,14 @@ class Login extends Component {
       //       onChangeText={password => this.setState({ password })}
       //     />
       //   </Item>
+
       //   <Button
       //     full
-      //     onPress={() => authStore.login(this.state, this.props.navigation)}
+      //     onPress={() => authStore.signup(this.state, this.props.navigation)}
       //   >
-      //     <Text>Login</Text>
+      //     <Text>Register</Text>
       //   </Button>
-
       // </Form>
-
       <Container style={{ justifyContent: "center" }}>
         <Card style={{ borderColor: "#BC8F8F" }}>
           <Text
@@ -72,9 +72,24 @@ class Login extends Component {
               fontFamily: "AcademyEngravedLetPlain"
             }}
           >
-            Login
+            SIGN UP
           </Text>
-
+          <Item>
+            <Icon active name="ios-person-add" style={{ color: "#687373" }} />
+            <Input
+              placeholder="First Name"
+              autoCapitalize="none"
+              onChangeText={first_name => this.setState({ first_name })}
+            />
+          </Item>
+          <Item>
+            <Icon active name="ios-person-add" style={{ color: "#687373" }} />
+            <Input
+              placeholder="Last Name"
+              autoCapitalize="none"
+              onChangeText={last_name => this.setState({ last_name })}
+            />
+          </Item>
           <Item>
             <Icon active name="ios-person" style={{ color: "#687373" }} />
             <Input
@@ -101,24 +116,13 @@ class Login extends Component {
               fontWeight: "bold",
               marginTop: 10
             }}
-            onPress={() => authStore.login(this.state, this.props.navigation)}
+            onPress={() => this.signupUser()}
           >
-            <Text style={{ fontSize: 20 }}>Login</Text>
-          </Button>
-          <Button
-            full
-            style={{
-              backgroundColor: "#BC8F8F",
-              fontWeight: "bold",
-              marginTop: 10
-            }}
-            onPress={() => this.props.navigation.replace("Register")}
-          >
-            <Text>Register</Text>
+            <Text style={{ fontSize: 20 }}>Register</Text>
           </Button>
         </Card>
       </Container>
     );
   }
 }
-export default withNavigation(observer(Login));
+export default observer(Register);
