@@ -14,7 +14,7 @@ class Register extends Component {
   };
 
   handlePress = () => {
-    authStore.register(this.state);
+    authStore.register(this.state, this.props.navigation);
   };
 
   render() {

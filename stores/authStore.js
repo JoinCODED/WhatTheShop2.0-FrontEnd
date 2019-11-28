@@ -15,31 +15,31 @@ class AuthStore {
       // Save token to localStorage
       await AsyncStorage.setItem("myToken", token);
       // Set token to Auth header
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       this.user = jwt_decode(token);
     } else {
       await AsyncStorage.removeItem("myToken");
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
       this.user = null;
     }
   };
 
   login = async (userData, navigation) => {
     try {
-      const res = await instance.post("/api/login/", userData);
+      const res = await instance.post("api/login/", userData);
       const user = res.data;
-      this.setUser(user.access);
-      navigation.navigate("ProfileStack");
+      await this.setUser(user.access);
+      navigation.navigate("Profile");
     } catch (err) {
       console.log("something went wrong logging in", err);
     }
   };
 
-  register = async userData => {
+  register = async (userData, navigation) => {
     try {
-      await instance.post("/api/register/", userData);
-      this.login(userData);
+      await instance.post("api/register/", userData);
+      this.login(userData, navigation);
     } catch (err) {
       console.error(err);
     }
