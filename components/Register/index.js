@@ -7,14 +7,14 @@ import { Form, Item, Input, Button, Text } from "native-base";
 // Store
 import authStore from "../../stores/authStore";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     username: "",
     password: ""
   };
 
   handlePress = () => {
-    authStore.login(this.state, this.props.navigation);
+    authStore.register(this.state);
   };
 
   render() {
@@ -36,16 +36,17 @@ class Login extends Component {
           />
         </Item>
         <Button full onPress={this.handlePress}>
-          <Text>Login</Text>
+          <Text>Register</Text>
         </Button>
-        <Button full onPress={() => this.props.navigation.navigate("Register")}>
-          <Text>Register Now!</Text>
+        <Button full onPress={() => this.props.navigation.navigate("Login")}>
+          <Text>Already registered? Login here!</Text>
         </Button>
       </Form>
     );
   }
 }
-Login.navigationOptions = {
-  title: "Login"
+Register.navigationOptions = {
+  title: "Register"
 };
-export default observer(Login);
+
+export default Register;

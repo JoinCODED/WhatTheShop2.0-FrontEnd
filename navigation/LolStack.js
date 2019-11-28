@@ -8,6 +8,7 @@ const LolStack = createStackNavigator(
     Lol: LolScreen
   },
   {
+    initialRouteName: "Lol",
     defaultNavigationOptions: {
       title: "WhatTheShop"
     }
