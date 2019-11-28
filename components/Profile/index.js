@@ -3,6 +3,8 @@ import React from "react";
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
 
+import CartButton from "../Buttons/CartButton";
+
 const Profile = () => {
   return (
     <Card>
@@ -16,5 +18,10 @@ const Profile = () => {
       </CardItem>
     </Card>
   );
+};
+
+Profile.navigationOptions = {
+  title: "Profile",
+  headerRight: <CartButton />
 };
 export default Profile;
