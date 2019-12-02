@@ -8,6 +8,7 @@ const LolStack = createStackNavigator(
     List: List
   },
   {
+    initialRouteName: "Lol",
     defaultNavigationOptions: {
       title: "Dinosaur List"
     }
