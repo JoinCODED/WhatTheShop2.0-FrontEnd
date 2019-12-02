@@ -19,10 +19,10 @@ import {
 } from "native-base";
 
 // Style
-
+import styles from "../List/styles";
 // Components
 // import CartButton from "../Buttons/CartButton";
-// import dinoStore from "../../Stores/dinoStore";
+import dinoStore from "../../Stores/dinoStore";
 // import cartStore from "../../Stores/cartStore";
 // import authStore from "../../Stores/authStore";
 
@@ -53,7 +53,7 @@ class DinosaurDetail extends Component {
               </Left>
               <Body />
               <Right>
-                <Thumbnail bordered source={{ uri: dinosaur.img }} />
+                <Thumbnail bordered source={{ uri: dinosaur.image }} />
               </Right>
             </CardItem>
           </Card>

@@ -4,12 +4,6 @@ import { AsyncStorage } from "react-native";
 
 import { instance } from "./instance";
 
-
-const instance = axios.create({
-  baseURL: "http://192.168.100.148:80/"
-});
-
-
 class AuthStore {
   user = null;
 

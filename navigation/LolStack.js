@@ -2,13 +2,15 @@ import { createStackNavigator } from "react-navigation-stack";
 
 // Components
 import List from "../components/List";
+import Detail from "../components/Detail";
 
 const LolStack = createStackNavigator(
   {
-    List: List
+    List: List,
+    DetailScreen: Detail
   },
   {
-    initialRouteName: "Lol",
+    initialRouteName: "List",
     defaultNavigationOptions: {
       title: "Dinosaur List"
     }
