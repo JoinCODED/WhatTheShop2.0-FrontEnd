@@ -1,16 +1,16 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 // Components
-import LolScreen from "../components/Lol";
+import List from "../components/List";
 
 const LolStack = createStackNavigator(
   {
-    Lol: LolScreen
+    List: List
   },
   {
     initialRouteName: "Lol",
     defaultNavigationOptions: {
-      title: "WhatTheShop"
+      title: "Dinosaur List"
     }
   }
 );

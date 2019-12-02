@@ -1,11 +1,14 @@
 import { decorate, observable } from "mobx";
 import axios from "axios";
 import { AsyncStorage } from "react-native";
-import jwt_decode from "jwt-decode";
+
+import { instance } from "./instance";
+
 
 const instance = axios.create({
   baseURL: "http://192.168.100.148:80/"
 });
+
 
 class AuthStore {
   user = null;
