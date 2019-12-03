@@ -1,6 +1,7 @@
 import { decorate, observable } from "mobx";
 import { instance } from "./instance";
 import axios from "axios";
+
 class DinoStore {
   dinosaurs = [];
   loading = true;

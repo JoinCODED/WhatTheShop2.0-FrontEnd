@@ -1,7 +1,7 @@
 import React from "react";
 import { withNavigation } from "react-navigation";
 // import { View } from "react-native";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 
 // NativeBase Components
 import {
@@ -16,11 +16,13 @@ import {
   Icon,
   Left,
   Body,
-  Right
+  Right,
+  ListItem
 } from "native-base";
 
 // Style
 import styles from "./styles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const DinoItem = ({ dinosaur, navigation }) => {
   const handlePress = () =>
@@ -30,27 +32,29 @@ const DinoItem = ({ dinosaur, navigation }) => {
     });
 
   return (
-    <Card>
-      <CardItem>
-        <Left>
-          <Body>
-            <Text>{dinosaur.name}</Text>
-            <Text note>{dinosaur.rarity}</Text>
-          </Body>
-        </Left>
-      </CardItem>
-      <CardItem cardBody>
-        <Image
-          source={{ uri: dinosaur.image }}
-          style={{ height: 200, width: null, flex: 1 }}
-        />
-      </CardItem>
-      <CardItem>
-        <Right>
-          <Text>{dinosaur.price}</Text>
-        </Right>
-      </CardItem>
-    </Card>
+    <TouchableOpacity onPress={handlePress}>
+      <Card>
+        <CardItem>
+          <Left>
+            <Body>
+              <Text>{dinosaur.name}</Text>
+              <Text note>{dinosaur.rarity}</Text>
+            </Body>
+          </Left>
+        </CardItem>
+        <CardItem cardBody>
+          <Image
+            source={{ uri: dinosaur.image }}
+            style={{ height: 200, width: null, flex: 1 }}
+          />
+        </CardItem>
+        <CardItem>
+          <Right>
+            <Text>{dinosaur.price}</Text>
+          </Right>
+        </CardItem>
+      </Card>
+    </TouchableOpacity>
   );
 };
 
