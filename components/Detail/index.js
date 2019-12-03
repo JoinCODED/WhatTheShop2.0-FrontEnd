@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { observer } from "mobx-react";
 // import NumericInput from "react-native-numeric-input";
 
 // NativeBase Components
@@ -22,16 +22,14 @@ import {
 import styles from "../List/styles";
 // Components
 // import CartButton from "../Buttons/CartButton";
-import dinoStore from "../../Stores/dinoStore";
+
+// Store
+import dinoStore from "../../stores/dinoStore";
 // import cartStore from "../../Stores/cartStore";
 // import authStore from "../../Stores/authStore";
 
 class DinosaurDetail extends Component {
   state = {
-    name: "",
-    price: "",
-    description: "",
-    rarity: "",
     quantity: 1
   };
 
@@ -67,4 +65,4 @@ DinosaurDetail.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam("dinosaurName")
 });
 
-export default DinosaurDetail;
+export default observer(DinosaurDetail);
