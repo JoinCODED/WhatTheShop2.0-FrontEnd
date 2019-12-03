@@ -66,11 +66,7 @@ class AuthStore {
 }
 
 decorate(AuthStore, {
-  user: observable,
-  login: observable,
-  signup: observable,
-  logout: observable,
-  checkForToken: observable
+  user: observable
 });
 
 const authStore = new AuthStore();

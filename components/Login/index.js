@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { Form, Item, Input, Button, Text } from "native-base";
 
 // Store
-import authStore from "../../stores/authStore";
+import authStore from "../../Stores/authStore";
 
 class Login extends Component {
   state = {
@@ -13,6 +13,10 @@ class Login extends Component {
     password: ""
   };
 
+
+  componentDidMount() {
+    if (authStore.user) this.props.navigation.navigate("StackNav");
+  }
   handlePress = () => {
     authStore.login(this.state, this.props.navigation);
   };

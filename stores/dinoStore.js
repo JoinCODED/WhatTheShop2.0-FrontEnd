@@ -1,6 +1,5 @@
 import { decorate, observable } from "mobx";
 import { instance } from "./instance";
-import axios from "axios";
 
 class DinoStore {
   dinosaurs = [];
@@ -8,9 +7,7 @@ class DinoStore {
 
   fetchAllDinosaurs = async () => {
     try {
-      console.log("res");
       const res = await instance.get("dinosaurs/");
-      console.log(res);
       const dinosaurs = res.data;
       this.dinosaurs = dinosaurs;
       this.loading = false;

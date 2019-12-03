@@ -17,6 +17,7 @@ const CartButton = ({ navigation }) => {
     <Button onPress={handlePress} transparent light>
       {authStore.user ? (
         <>
+
           <Text style={{ color: "black" }}>{cartStore.quantity}</Text>
           <Icon
             name="shoppingcart"
@@ -28,7 +29,6 @@ const CartButton = ({ navigation }) => {
       ) : (
         <Icon
           name="login"
-          type="MaterialCommunityIcons"
           style={{ color: "black" }}
           onPress={() => navigation.navigate("Login")}
         />
