@@ -1,6 +1,6 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
 import { AsyncStorage } from "react-native";
+import jwt_decode from "jwt-decode";
 
 import { instance } from "./instance";
 
@@ -24,7 +24,7 @@ class AuthStore {
 
   login = async (userData, navigation) => {
     try {
-      const res = await instance.post("api/login/", userData);
+      const res = await instance.post("login/", userData);
       const user = res.data;
       await this.setUser(user.access);
       navigation.navigate("Profile");
@@ -35,7 +35,7 @@ class AuthStore {
 
   register = async (userData, navigation) => {
     try {
-      await instance.post("api/register/", userData);
+      await instance.post("register/", userData);
       this.login(userData, navigation);
     } catch (err) {
       console.error(err);

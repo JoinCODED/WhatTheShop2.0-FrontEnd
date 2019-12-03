@@ -12,7 +12,7 @@ const ProfileStack = createStackNavigator(
     Register: RegisterScreen
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "Profile",
     defaultNavigationOptions: {
       title: "WhatTheShop"
     }
