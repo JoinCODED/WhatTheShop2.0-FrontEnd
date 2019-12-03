@@ -1,6 +1,7 @@
 import { computed, decorate, observable } from "mobx";
 
 class CartStore {
+
   dinosaurs = [];
 
   addItemToCart = dinosaur => {
@@ -20,6 +21,7 @@ class CartStore {
   checkoutCart = () => {
     this.dinosaurs = [];
     alert("Thank you for buying our Dinosaurs");
+
   };
 
   get quantity() {

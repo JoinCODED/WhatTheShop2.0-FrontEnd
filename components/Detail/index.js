@@ -21,12 +21,12 @@ import {
 // Style
 import styles from "../List/styles";
 // Components
-// import CartButton from "../Buttons/CartButton";
+import CartButton from "../Buttons/CartButton";
 
 // Store
 import dinoStore from "../../stores/dinoStore";
-// import cartStore from "../../Stores/cartStore";
-// import authStore from "../../Stores/authStore";
+// import cartStore from "../../stores/cartStore";
+// import authStore from "../../stores/authStore";
 
 class DinosaurDetail extends Component {
   state = {
@@ -60,9 +60,9 @@ class DinosaurDetail extends Component {
     );
   }
 }
+export default DinosaurDetail;
 
 DinosaurDetail.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("dinosaurName")
+  title: navigation.getParam("dinosaurName"),
+  headerRight: <CartButton />
 });
-
-export default observer(DinosaurDetail);

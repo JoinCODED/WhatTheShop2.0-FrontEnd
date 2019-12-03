@@ -7,7 +7,7 @@ class DinoStore {
 
   fetchAllDinosaurs = async () => {
     try {
-      const res = await instance.get("list/");
+      const res = await instance.get("dinosaurs/");
       const dinosaurs = res.data;
       this.dinosaurs = dinosaurs;
       this.loading = false;

@@ -4,8 +4,8 @@ import { withNavigation } from "react-navigation";
 import { Icon, Text, Button } from "native-base";
 
 // Stores
-import cartStore from "../../Stores/cartStore";
-import authStore from "../../Stores/authStore";
+import cartStore from "../../stores/cartStore";
+import authStore from "../../stores/authStore";
 
 const CartButton = ({ navigation }) => {
   const handlePress = () => {
@@ -17,26 +17,19 @@ const CartButton = ({ navigation }) => {
     <Button onPress={handlePress} transparent light>
       {authStore.user ? (
         <>
-          <Text style={{ color: "red" }}>{cartStore.quantity}</Text>
-          <Icon
-            name="shoppingcart"
-            type="AntDesign"
-            style={{ color: "red" }}
 
-          <Text style={{ color: "white" }}>{cartStore.quantity}</Text>
+          <Text style={{ color: "black" }}>{cartStore.quantity}</Text>
           <Icon
             name="shoppingcart"
             type="AntDesign"
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             onPress={() => navigation.navigate("CartScreen")}
           />
         </>
       ) : (
         <Icon
           name="login"
-          type="MaterialCommunityIcons"
-          style={{ color: "red" }}
-          style={{ color: "white" }}
+          style={{ color: "black" }}
           onPress={() => navigation.navigate("Login")}
         />
       )}
