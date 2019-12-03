@@ -11,7 +11,7 @@ const Profile = () => {
       <CardItem>
         <Button
           danger
-          onPress={() => alert("You need to implement Logout n00b...")}
+          onPress={() => alert("You need to implement Logout ...")}
         >
           <Text>Logout</Text>
         </Button>
