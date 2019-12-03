@@ -22,6 +22,7 @@ const Profile = () => {
 
 Profile.navigationOptions = {
   title: "Profile",
-  headerRight: <CartButton />
+  headerRight: <CartButton />,
+  headerLeft: <Profile />
 };
 export default Profile;
