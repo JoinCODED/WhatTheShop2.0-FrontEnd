@@ -22,6 +22,12 @@ const CartButton = ({ navigation }) => {
             name="shoppingcart"
             type="AntDesign"
             style={{ color: "red" }}
+
+          <Text style={{ color: "white" }}>{cartStore.quantity}</Text>
+          <Icon
+            name="shoppingcart"
+            type="AntDesign"
+            style={{ color: "white" }}
             onPress={() => navigation.navigate("CartScreen")}
           />
         </>
@@ -30,6 +36,7 @@ const CartButton = ({ navigation }) => {
           name="login"
           type="MaterialCommunityIcons"
           style={{ color: "red" }}
+          style={{ color: "white" }}
           onPress={() => navigation.navigate("Login")}
         />
       )}
