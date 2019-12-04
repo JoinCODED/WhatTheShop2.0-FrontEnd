@@ -38,6 +38,7 @@ class DinosaurDetail extends Component {
     const dinosaur = dinoStore.dinosaurs.find(
       dinosaur => dinosaurID === dinosaur.id
     );
+
     return (
       <Container>
         <Content>
