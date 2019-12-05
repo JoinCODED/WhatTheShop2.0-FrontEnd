@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { observer } from "mobx-react";
-// import NumericInput from "react-native-numeric-input";
+
+import NumericInput from "react-native-numeric-input";
 
 // NativeBase Components
 import { Alert } from "react-native";
@@ -19,18 +19,40 @@ import {
 } from "native-base";
 
 // Style
-import styles from "../List/styles";
+import styles from "./styles";
+
 // Components
 import CartButton from "../Buttons/CartButton";
 
 // Store
 import dinoStore from "../../stores/dinoStore";
-// import cartStore from "../../stores/cartStore";
-// import authStore from "../../stores/authStore";
+import authStore from "../../stores/authStore";
+import cartStore from "../../stores/cartStore";
 
 class DinosaurDetail extends Component {
   state = {
-    quantity: 1
+    quantity: 1,
+    name: this.props.navigation.getParam("dinosaurName")
+  };
+
+  handleAdd = () => {
+    if (authStore.user) cartStore.addItemToCart(this.state);
+    else {
+      Alert.alert(
+        "Login to add items to cart",
+        [
+          {
+            text: "Log in",
+            onPress: () => this.props.navigation.navigate("Login")
+          },
+          {
+            text: "Cancel",
+            style: "cancel"
+          }
+        ],
+        { cancelable: true }
+      );
+    }
   };
 
   render() {
@@ -54,15 +76,31 @@ class DinosaurDetail extends Component {
                 <Thumbnail bordered source={{ uri: dinosaur.image }} />
               </Right>
             </CardItem>
+            <CardItem>
+              <Body style={styles.numericInput}>
+                <NumericInput
+                  value={this.state.value}
+                  onChange={quantity => this.setState({ quantity })}
+                  initValue={1}
+                />
+              </Body>
+
+              <Right>
+                <Button full style={styles.addButton} onPress={this.handleAdd}>
+                  <Text>Add to Cart</Text>
+                </Button>
+              </Right>
+            </CardItem>
           </Card>
         </Content>
       </Container>
     );
   }
 }
-export default DinosaurDetail;
 
 DinosaurDetail.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam("dinosaurName"),
   headerRight: <CartButton />
 });
+
+export default DinosaurDetail;

@@ -1,32 +1,25 @@
 import { computed, decorate, observable } from "mobx";
 
 class CartStore {
+  items = [];
 
-  dinosaurs = [];
-
-  addItemToCart = dinosaur => {
-    const dinosaurExist = this.dinosaur.find(
-      _dinosaur =>
-        _dinosaur.name === dinosaur.name && _dinosaur.price === dinosaur.price
-    );
-    if (dinosaurExist) dinosaurExist.quantity += dinosaur.quantity;
-    else this.dinosaurs.push(dinosaur);
+  addItemToCart = item => {
+    const itemExist = this.items.find(_item => _item.name === item.name);
+    if (itemExist) itemExist.quantity += item.quantity;
+    else this.items.push(item);
   };
 
-  removeItemFromCart = dinosaur =>
-    (this.dinosaurs = this.dinosaurs.filter(
-      _dinosaur => _dinosaur !== dinosaur
-    ));
+  removeItemFromCart = item =>
+    (this.items = this.items.filter(_item => _item !== item));
 
   checkoutCart = () => {
-    this.dinosaurs = [];
-    alert("Thank you for buying our Dinosaurs");
-
+    this.items = [];
+    alert("Thank you for buying our items");
   };
 
   get quantity() {
     let quantity = 0;
-    this.dinosaurs.forEach(dinosaur => (quantity += dinosaur.quantity));
+    this.items.forEach(item => (quantity += item.quantity));
     return quantity;
   }
 }

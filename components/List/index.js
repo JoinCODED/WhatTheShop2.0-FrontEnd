@@ -6,6 +6,7 @@ import { List, Content, Spinner } from "native-base";
 
 // Component
 import DinoItem from "./DinoItem";
+import CartButton from "../Buttons/CartButton";
 
 // Stores
 import dinoStore from "../../stores/dinoStore";
@@ -20,7 +21,7 @@ const DinosaurList = ({ navigation }) => {
   return (
     <Content>
       <List>{dinosaurList}</List>
-      {/* <Logout /> */}
+      {/* authStore.user && <Logout /> */}
     </Content>
   );
 };
