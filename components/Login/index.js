@@ -5,14 +5,13 @@ import { observer } from "mobx-react";
 import { Form, Item, Input, Button, Text } from "native-base";
 
 // Store
-import authStore from "../../Stores/authStore";
+import authStore from "../../stores/authStore";
 
 class Login extends Component {
   state = {
     username: "",
     password: ""
   };
-
 
   componentDidMount() {
     if (authStore.user) this.props.navigation.navigate("StackNav");

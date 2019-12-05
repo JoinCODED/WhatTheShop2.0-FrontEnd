@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { observer } from "mobx-react";
-// import NumericInput from "react-native-numeric-input";
+
+import NumericInput from "react-native-numeric-input";
 
 // NativeBase Components
 import { Alert } from "react-native";
@@ -19,7 +19,8 @@ import {
 } from "native-base";
 
 // Style
-import styles from "../List/styles";
+import styles from "./styles";
+
 // Components
 import CartButton from "../Buttons/CartButton";
 
@@ -27,16 +28,15 @@ import CartButton from "../Buttons/CartButton";
 import dinoStore from "../../stores/dinoStore";
 import authStore from "../../stores/authStore";
 import cartStore from "../../stores/cartStore";
-// import cartStore from "../../stores/cartStore";
-// import authStore from "../../stores/authStore";
 
 class DinosaurDetail extends Component {
   state = {
-    quantity: 1
+    quantity: 1,
+    name: this.props.navigation.getParam("dinosaurName")
   };
 
   handleAdd = () => {
-    if (authStore.user) cartStore.addItemToCart(this.setState);
+    if (authStore.user) cartStore.addItemToCart(this.state);
     else {
       Alert.alert(
         "Login to add items to cart",
@@ -46,7 +46,7 @@ class DinosaurDetail extends Component {
             onPress: () => this.props.navigation.navigate("Login")
           },
           {
-            text: "cancel",
+            text: "Cancel",
             style: "cancel"
           }
         ],
@@ -79,7 +79,8 @@ class DinosaurDetail extends Component {
             <CardItem>
               <Body style={styles.numericInput}>
                 <NumericInput
-                  value={this.setState({ quantity })}
+                  value={this.state.value}
+                  onChange={quantity => this.setState({ quantity })}
                   initValue={1}
                 />
               </Body>
