@@ -11,7 +11,11 @@ import {
   Left,
   Picker,
   Text,
-  Spinner
+  Spinner,
+  Container,
+  Header,
+  Content,
+  Accordion
 } from "native-base";
 
 // Stores
@@ -50,18 +54,29 @@ class Profile extends Component {
     }
   };
   render() {
-    if (profileStore.loading) return <Spinner />;
-
-    return (
-      <Card>
-        <CardItem>
-          <Left>
-            <Text>{profileStore.user.name}</Text>
-            <Text>{profileStore.user.email}</Text>
-          </Left>
-        </CardItem>
-      </Card>
-    );
+    if (profileStore.loading || orderStore.loading) {
+      return <Spinner />;
+    } else {
+      return (
+        <>
+          <Card>
+            <CardItem>
+              <Left>
+                <Text>{profileStore.user.name}</Text>
+                <Text>{profileStore.user.email}</Text>
+                <Text>{profileStore.user.username}</Text>
+              </Left>
+            </CardItem>
+          </Card>
+          <Container>
+            <Header />
+            <Content padder>
+              <Accordion order={orderStore.id} expanded={0} />
+            </Content>
+          </Container>
+        </>
+      );
+    }
   }
 }
 

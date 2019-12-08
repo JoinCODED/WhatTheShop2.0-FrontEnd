@@ -11,6 +11,7 @@ class ProfileStore {
       const res = await instance.get("profile/");
       const user = res.data;
       this.user = user;
+      console.log("this is logged", user);
       this.loading = false;
     } catch (err) {
       console.error(err);
@@ -18,7 +19,8 @@ class ProfileStore {
   };
 }
 decorate(ProfileStore, {
-  user: observable
+  user: observable,
+  loading: observable
 });
 
 const profileStore = new ProfileStore();
