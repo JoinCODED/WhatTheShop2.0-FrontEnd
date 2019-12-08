@@ -42,8 +42,9 @@ class AuthStore {
     }
   };
 
-  logout = () => {
-    this.setUser();
+  logout = async navigation => {
+    await this.setUser();
+    navigation.navigate("list");
   };
 
   checkForToken = async () => {

@@ -5,6 +5,9 @@ import ProfileScreen from "../components/Profile";
 import LoginScreen from "../components/Login";
 import RegisterScreen from "../components/Register";
 
+//Navigation
+import StackNav from "./StackNav";
+
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
