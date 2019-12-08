@@ -13,7 +13,6 @@ import {
   Content,
   Thumbnail,
   Left,
-  Picker,
   Right,
   Text
 } from "native-base";
@@ -40,6 +39,7 @@ class DinosaurDetail extends Component {
     else {
       Alert.alert(
         "Login to add items to cart",
+        "",
         [
           {
             text: "Log in",
