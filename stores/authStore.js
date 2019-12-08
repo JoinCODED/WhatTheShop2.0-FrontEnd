@@ -1,11 +1,7 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
-
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
-});
+import { instance } from "./instance";
 
 class AuthStore {
   user = null;
@@ -15,22 +11,37 @@ class AuthStore {
       // Save token to localStorage
       await AsyncStorage.setItem("myToken", token);
       // Set token to Auth header
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       this.user = jwt_decode(token);
     } else {
+      delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
-      delete axios.defaults.headers.common.Authorization;
       this.user = null;
     }
   };
 
-  login = async userData => {
+  signup = async (userData, navigation) => {
     try {
-      const res = await instance.post("/api/login/", userData);
-      const user = res.data;
-      this.setUser(user.access);
+      await instance.post("register/", userData);
+      console.log("signed-up");
+      this.login(userData, navigation);
     } catch (err) {
+      console.error(err);
+      console.log("something went wrong signing in");
+    }
+  };
+
+  login = async (userData, navigation) => {
+    try {
+      console.log("USER", userData);
+      const res = await instance.post("login/", userData);
+      const user = res.data;
+      await this.setUser(user.access);
+      navigation.navigate("ListScreen");
+      console.log("logged in");
+    } catch (err) {
+      console.error(err);
       console.log("something went wrong logging in");
     }
   };
