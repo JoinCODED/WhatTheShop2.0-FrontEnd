@@ -91,11 +91,19 @@ class Profile extends Component {
               <Left>
                 <Text style={{ fontSize: 20 }}>Order History:</Text>
               </Left>
-          </Card>
+            </Header>
+            <Content padder>
+              <Accordion dataArray={orderHistory} expanded={0} />
+            </Content>
+          </Container>
         </>
       );
     }
   }
+}
+
+Profile.navigationOptions = {
+  title: "Profile",
   headerRight: <CartButton />,
   headerLeft: <LogoutButton />
 };
