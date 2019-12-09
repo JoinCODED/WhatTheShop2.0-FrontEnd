@@ -13,14 +13,12 @@ import authStore from "../../stores/authStore";
 const LogoutButton = ({ navigation }) => {
   if (authStore.user)
     return (
-      <Button transparent light>
-        <Icon
-          onPress={authStore.logout(navigation)}
-          name="logout"
-          type="MaterialCommunityIcons"
-          style={{ color: "red" }}
-        />
-      </Button>
+      <Icon
+        onPress={() => authStore.logout(navigation)}
+        name="logout"
+        type="MaterialCommunityIcons"
+        style={{ color: "red" }}
+      />
     );
 };
 
