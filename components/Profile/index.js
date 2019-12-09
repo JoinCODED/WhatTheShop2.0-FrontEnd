@@ -47,8 +47,8 @@ class Profile extends Component {
       return <Spinner />;
     } else {
       const orderHistory = orderStore.orders.map(order => ({
-        title: `Order No. ${order.id} (${order.date.slice(0, 10)}) `,
-        content: `${order.items[0].item.name}, ${order.items[0].item.price} KD, QTY: ${order.items[0].quantity} `
+        title: `Order No. ${order.id} (${order.date.slice(0, 10)}) `
+        // content: `${order.items[0].item.name}, ${order.items[0].item.price} KD, QTY: ${order.items[0].quantity} `
       }));
       return (
         <>
