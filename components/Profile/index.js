@@ -33,24 +33,12 @@ import LogoutButton from "../Buttons/LogoutButton";
 class Profile extends Component {
   componentDidMount = async () => {
     if (authStore.user) {
+      console.log("BEFORE");
       await profileStore.getUserProfile();
+      console.log("AFTER PROFILE");
       await orderStore.fetchAllOrders();
     } else {
-      Alert.alert(
-        "You're not logged in!",
-        "Log in to view your profile!",
-        [
-          {
-            text: "Nevermind",
-            style: "cancel"
-          },
-          {
-            text: "Log in",
-            onPress: () => this.props.navigation.replace("Login")
-          }
-        ],
-        { cancelable: true }
-      );
+      this.props.navigation.replace("Login");
     }
   };
 
